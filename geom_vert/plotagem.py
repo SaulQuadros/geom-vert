@@ -32,10 +32,12 @@ def plotar_perfil(r: ResultadoCurvaVertical) -> Figure:
     ax.plot(r.x_tanA, r.Z_tanA, "--", color="gray", label="Tangente em A (PCV)")
     ax.plot(r.x_tanB, r.Z_tanB, "--", color="orange", label="Tangente em B (PTV)")
 
-    # Pontos notáveis: A (PCV) e B (PTV) em vermelho; I (PIV), na interseção das
-    # tangentes, em azul; vértice como estrela azul
-    ax.scatter([x_A, x_B], [r.Z_A, r.Z_B], color="red", zorder=5)
-    ax.scatter([x_I], [r.Z_PIV], color="blue", zorder=5)
+    # Pontos notáveis:
+    #  - A (PCV), B (PTV) e PIV (interseção das tangentes) em vermelho
+    #  - ponto médio sobre a parábola em azul (separado do PIV pela flecha e)
+    #  - vértice da parábola como estrela azul
+    ax.scatter([x_A, x_B, x_I], [r.Z_A, r.Z_B, r.Z_PIV], color="red", zorder=5)
+    ax.scatter([x_I], [r.Z_I_parab], color="blue", zorder=6)
     if not np.isnan(r.Z_V):
         ax.scatter([r.x_V], [r.Z_V], color="blue", zorder=6, marker="*", s=180)
 
