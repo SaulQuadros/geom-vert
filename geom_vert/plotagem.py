@@ -32,8 +32,10 @@ def plotar_perfil(r: ResultadoCurvaVertical) -> Figure:
     ax.plot(r.x_tanA, r.Z_tanA, "--", color="gray", label="Tangente em A (PCV)")
     ax.plot(r.x_tanB, r.Z_tanB, "--", color="orange", label="Tangente em B (PTV)")
 
-    # Pontos notáveis
-    ax.scatter([x_A, x_B, x_I], [r.Z_A, r.Z_B, r.Z_I_parab], color="red", zorder=5)
+    # Pontos notáveis: A (PCV) e B (PTV) em vermelho; I (PIV), na interseção das
+    # tangentes, em azul; vértice como estrela azul
+    ax.scatter([x_A, x_B], [r.Z_A, r.Z_B], color="red", zorder=5)
+    ax.scatter([x_I], [r.Z_PIV], color="blue", zorder=5)
     if not np.isnan(r.Z_V):
         ax.scatter([r.x_V], [r.Z_V], color="blue", zorder=6, marker="*", s=180)
 
@@ -43,30 +45,15 @@ def plotar_perfil(r: ResultadoCurvaVertical) -> Figure:
     ax.text(x_B, r.Z_B + (0.4 if convexa else -0.4), "B (PTV)",
             ha="center", fontsize=11, fontweight="bold")
 
-    # Rótulos de V (vértice) e I (PIV) com posicionamento inteligente
-    if not np.isnan(r.Z_V):
-        dx = r.L * 0.03
-        dy = abs(r.Z_V - r.Z_I_parab) + 0.6
+    # Rótulo do PIV (I), junto à interseção das tangentes
+    off_i = 0.4 if convexa else -0.4
+    ax.text(x_I, r.Z_PIV + off_i, "I (PIV)", ha="center", fontsize=11, fontweight="bold")
 
-        if abs(r.x_V - x_I) < 0.15 * r.L:
-            # Muito próximos: separam na vertical
-            if convexa:
-                ax.text(r.x_V, r.Z_V + dy, "V (Vértice)",
-                        ha="center", fontsize=11, color="blue", fontweight="bold")
-                ax.text(x_I, r.Z_I_parab - dy, "I (PIV)",
-                        ha="center", fontsize=11, fontweight="bold")
-            else:
-                ax.text(r.x_V, r.Z_V - dy, "V (Vértice)",
-                        ha="center", fontsize=11, color="blue", fontweight="bold")
-                ax.text(x_I, r.Z_I_parab + dy, "I (PIV)",
-                        ha="center", fontsize=11, fontweight="bold")
-        else:
-            # Afastados: um à esquerda e um à direita
-            offset = 0.7 if convexa else -0.7
-            ax.text(r.x_V - dx, r.Z_V + offset, "V (Vértice)",
-                    ha="center", fontsize=11, color="blue", fontweight="bold")
-            ax.text(x_I + dx, r.Z_I_parab + offset, "I (PIV)",
-                    ha="center", fontsize=11, fontweight="bold")
+    # Rótulo do vértice (V), junto à curva e no lado oposto ao PIV para não colidir
+    if not np.isnan(r.Z_V):
+        off_v = -0.7 if convexa else 0.7
+        ax.text(r.x_V, r.Z_V + off_v, "V (Vértice)",
+                ha="center", fontsize=11, color="blue", fontweight="bold")
 
     # Anotações das inclinações
     offset_i = 0.7 if convexa else -0.7

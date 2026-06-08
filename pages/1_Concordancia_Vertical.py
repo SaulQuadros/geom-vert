@@ -65,13 +65,15 @@ with col_res:
             "Elemento": [
                 "Cota de A (PCV) — Z_A",
                 "Cota de B (PTV) — Z_B",
-                "Cota do PIV na parábola — Z_I",
+                "Cota do PIV (tangentes) — Z_PIV",
+                "Cota do ponto médio na parábola",
                 "Abscissa do vértice — x_V",
                 "Cota do vértice — Z_V",
             ],
             "Valor": [
                 f"{r.Z_A:.3f} m",
                 f"{r.Z_B:.3f} m",
+                f"{r.Z_PIV:.3f} m",
                 f"{r.Z_I_parab:.3f} m",
                 f"{r.x_V:.3f} m",
                 f"{r.Z_V:.3f} m",
@@ -79,7 +81,8 @@ with col_res:
         }
     )
     st.table(tabela)
-    st.caption("A cota do PIV na parábola deve coincidir com o Z_I de entrada.")
+    st.caption("O PIV é a interseção das tangentes; afasta-se da curva pela flecha e. "
+               "O ponto médio sobre a parábola coincide com o Z_I de entrada.")
 
 with st.expander("📖 Fórmulas utilizadas"):
     st.latex(r"g = i_1 - i_2 \qquad e = \frac{L}{8}\,g")

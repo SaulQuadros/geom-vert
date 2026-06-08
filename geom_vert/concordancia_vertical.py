@@ -35,7 +35,8 @@ class ResultadoCurvaVertical:
     e: float            # flecha vertical
     Z_A: float          # cota do PCV (ponto A)
     Z_B: float          # cota do PTV (ponto B)
-    Z_I_parab: float    # cota do PIV sobre a parábola (confere com Z_I de entrada)
+    Z_I_parab: float    # cota do ponto médio sobre a parábola (confere com Z_I de entrada)
+    Z_PIV: float        # cota do PIV (interseção das tangentes; afastada da curva pela flecha e)
     x_V: float          # abscissa do vértice da parábola
     y_V: float          # ordenada do vértice em relação a A
     Z_V: float          # cota do vértice
@@ -96,7 +97,8 @@ def calcular_curva_vertical(
     # Cotas dos pontos notáveis
     Z_A = Z_I - i1 * (L / 2) + e          # PCV (ponto A)
     Z_B = Z_A + ((i1 + i2) / 2) * L       # PTV (ponto B)
-    Z_I_parab = Z_A + i1 * (L / 2) - e    # PIV sobre a parábola
+    Z_I_parab = Z_A + i1 * (L / 2) - e    # ponto médio sobre a parábola
+    Z_PIV = Z_A + i1 * (L / 2)            # PIV: interseção das tangentes (em x = L/2)
 
     # Vértice da parábola (ponto de inclinação nula)
     if g != 0:
@@ -135,6 +137,7 @@ def calcular_curva_vertical(
         Z_A=Z_A,
         Z_B=Z_B,
         Z_I_parab=Z_I_parab,
+        Z_PIV=Z_PIV,
         x_V=x_V,
         y_V=y_V,
         Z_V=Z_V,
