@@ -9,11 +9,18 @@ from .concordancia_vertical import (
     calcular_curva_vertical,
     montar_inclinacoes,
 )
-from .plotagem import plotar_perfil
+from .concordancia_vertical_assimetrica import (
+    ResultadoCurvaVerticalAssimetrica,
+    calcular_curva_vertical_assimetrica,
+)
+from .plotagem import plotar_perfil, plotar_perfil_assimetrica
 
 __all__ = [
     "ResultadoCurvaVertical",
     "calcular_curva_vertical",
     "montar_inclinacoes",
     "plotar_perfil",
+    "ResultadoCurvaVerticalAssimetrica",
+    "calcular_curva_vertical_assimetrica",
+    "plotar_perfil_assimetrica",
 ]
