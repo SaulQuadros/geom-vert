@@ -88,7 +88,7 @@ with col_res:
     g = r.i1 - r.i2
     c1, c2 = st.columns(2)
     c1.metric("Desnível g = i₁ − i₂", f"{g:.5f}")
-    c2.metric("Flecha vertical e", f"{r.e:.4f} m")
+    c2.metric("Flecha máxima e", f"{r.e:.4f} m")
 
     if assimetrica:
         tabela = pd.DataFrame(
