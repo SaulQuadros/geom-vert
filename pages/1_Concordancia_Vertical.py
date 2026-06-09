@@ -96,14 +96,14 @@ with col_res:
                 "Elemento": [
                     "l₁ (PCV→PIV)",
                     "l₂ (PIV→PTV)",
-                    "Comprimento total — L",
-                    "Cota de A (PCV) — Z_A",
-                    "Cota de B (PTV) — Z_B",
-                    "Cota do PIV (ápice) — Z_PIV",
-                    "Cota da curva sob o PIV — Z_F",
-                    "Declividade no PIV — s",
-                    "Abscissa do vértice — x_V",
-                    "Cota do vértice — Z_V",
+                    "Comprimento total: L",
+                    "Cota de A (PCV): Z_A",
+                    "Cota de B (PTV): Z_B",
+                    "Cota do PIV (ápice): Z_PIV",
+                    "Cota da curva sob o PIV: Z_F",
+                    "Declividade no PIV: s",
+                    "Abscissa do vértice: x_V",
+                    "Cota do vértice: Z_V",
                 ],
                 "Valor": [
                     f"{r.l1:.3f} m",
@@ -126,12 +126,12 @@ with col_res:
         tabela = pd.DataFrame(
             {
                 "Elemento": [
-                    "Cota de A (PCV) — Z_A",
-                    "Cota de B (PTV) — Z_B",
-                    "Cota do PIV (tangentes) — Z_PIV",
+                    "Cota de A (PCV): Z_A",
+                    "Cota de B (PTV): Z_B",
+                    "Cota do PIV (tangentes): Z_PIV",
                     "Cota do ponto médio na parábola",
-                    "Abscissa do vértice — x_V",
-                    "Cota do vértice — Z_V",
+                    "Abscissa do vértice: x_V",
+                    "Cota do vértice: Z_V",
                 ],
                 "Valor": [
                     f"{r.Z_A:.3f} m",
