@@ -5,6 +5,9 @@ O primeiro módulo cobre a **concordância vertical** (curva vertical parabólic
 nos modos **simétrico** (PIV no meio, x = L/2) e **assimétrico** (dois trechos
 com l₁ ≠ l₂), selecionáveis por um toggle no sidebar: cálculo dos pontos notáveis
 (PCV, PTV, PIV e vértice), flecha, desnível e desenho do perfil longitudinal.
+Inclui **estaqueamento** (estaca = 20 m): a partir da estaca de um ponto de
+referência (PIV, PCV ou PTV), gera as cotas do greide nas estacas inteiras (20 m)
+e intermediárias (10 m), com download em CSV.
 
 A lógica de cálculo e de desenho fica em um **núcleo único e puro** (`geom_vert/`),
 reaproveitado por duas interfaces:
@@ -19,6 +22,7 @@ geom_vert/
 ├── geom_vert/                    # núcleo (cálculo + plotagem), sem dependência de UI
 │   ├── concordancia_vertical.py             # curva simétrica
 │   ├── concordancia_vertical_assimetrica.py # curva assimétrica (l₁ ≠ l₂)
+│   ├── estaqueamento.py                      # gerar_estaqueamento() (cotas das estacas)
 │   └── plotagem.py               # plotar_perfil() / plotar_perfil_assimetrica()
 ├── app.py                        # Streamlit: página inicial
 ├── pages/1_Concordancia_Vertical.py   # Streamlit: módulo (expansão = novo arquivo aqui)

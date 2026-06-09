@@ -50,6 +50,21 @@ class ResultadoCurvaVertical:
     x_tanB: np.ndarray
     Z_tanB: np.ndarray
 
+    @property
+    def x_piv(self) -> float:
+        """Abscissa do PIV a partir do PCV (no simétrico, L/2)."""
+        return self.L / 2
+
+    def greide_em(self, x: float) -> float:
+        """Cota do greide (curva) a `x` metros do PCV (0 ≤ x ≤ L)."""
+        return self.Z_A + self.i1 * x - (self.g / (2 * self.L)) * x ** 2
+
+    def tangente_em(self, x: float) -> float:
+        """Cota da rampa tangente de referência (i1 antes do PIV, i2 depois)."""
+        if x <= self.L / 2:
+            return self.Z_A + self.i1 * x
+        return self.Z_B + self.i2 * (x - self.L)
+
 
 def montar_inclinacoes(tipo: str, i1_pct: float, i2_pct: float) -> tuple[float, float]:
     """Converte magnitudes em % + tipo de curva em inclinações com sinal (decimal).

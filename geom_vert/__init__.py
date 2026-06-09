@@ -13,6 +13,7 @@ from .concordancia_vertical_assimetrica import (
     ResultadoCurvaVerticalAssimetrica,
     calcular_curva_vertical_assimetrica,
 )
+from .estaqueamento import LinhaEstaca, gerar_estaqueamento
 from .plotagem import plotar_perfil, plotar_perfil_assimetrica
 
 __all__ = [
@@ -23,4 +24,6 @@ __all__ = [
     "ResultadoCurvaVerticalAssimetrica",
     "calcular_curva_vertical_assimetrica",
     "plotar_perfil_assimetrica",
+    "LinhaEstaca",
+    "gerar_estaqueamento",
 ]

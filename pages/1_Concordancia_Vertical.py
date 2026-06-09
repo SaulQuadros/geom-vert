@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from geom_vert import (  # noqa: E402
     calcular_curva_vertical,
     calcular_curva_vertical_assimetrica,
+    gerar_estaqueamento,
     montar_inclinacoes,
     plotar_perfil,
     plotar_perfil_assimetrica,
@@ -161,3 +162,51 @@ with st.expander("📖 Fórmulas utilizadas"):
         st.latex(r"Z_A = Z_I - i_1\frac{L}{2} + e \qquad Z_B = Z_A + \frac{i_1 + i_2}{2}\,L")
         st.latex(r"x_V = \frac{i_1\,L}{g} \qquad Z_V = Z_A + \frac{i_1^2\,L}{2\,g}")
         st.latex(r"Z(x) = Z_A + i_1 x - \frac{g}{2L}\,x^2")
+
+# --- Estaqueamento ----------------------------------------------------------
+with st.expander("📍 Estaqueamento (cotas das estacas)"):
+    st.caption("Estaca = 20 m. Informe a estaca de um ponto de referência; as "
+               "cotas do greide são geradas do PCV ao PTV.")
+    c_ref, c_est, c_frac, c_passo = st.columns([2, 1, 1, 2])
+    ponto_label = c_ref.selectbox(
+        "Estaca conhecida do:",
+        ["PIV (I)", "PCV (A)", "PTV (B)"],
+        index=0,
+    )
+    est_inteira = c_est.number_input("Estaca inteira", value=10, min_value=0, step=1)
+    fracao = c_frac.number_input("Fração (m)", value=0.0, min_value=0.0,
+                                 max_value=20.0, step=0.5, format="%.2f")
+    passo_label = c_passo.selectbox(
+        "Intermediárias a cada",
+        ["10 m", "5 m", "20 m (só inteiras)"],
+        index=0,
+    )
+    ref_map = {"PIV (I)": "PIV", "PCV (A)": "PCV", "PTV (B)": "PTV"}
+    passo_map = {"10 m": 10.0, "5 m": 5.0, "20 m (só inteiras)": 20.0}
+
+    linhas = gerar_estaqueamento(
+        r, ref_map[ponto_label], int(est_inteira), float(fracao), passo_map[passo_label]
+    )
+    df_est = pd.DataFrame(
+        [
+            {
+                "Estaca": ln.estaca,
+                "x (m)": round(ln.x, 2),
+                "Cota tangente (m)": round(ln.cota_tangente, 3),
+                "Flecha (m)": round(ln.flecha, 3),
+                "Cota greide (m)": round(ln.cota_greide, 3),
+                "Ponto": ln.ponto,
+            }
+            for ln in linhas
+        ]
+    )
+    st.dataframe(df_est, use_container_width=True, hide_index=True)
+    st.caption("No PIV: a cota na tangente é o ápice; a cota do greide é a da curva "
+               "(diferem pela flecha).")
+    csv = df_est.to_csv(index=False, sep=";", decimal=",").encode("utf-8-sig")
+    st.download_button(
+        "⬇️ Baixar estaqueamento (CSV)",
+        data=csv,
+        file_name="estaqueamento.csv",
+        mime="text/csv",
+    )

@@ -54,6 +54,26 @@ class ResultadoCurvaVerticalAssimetrica:
     x_tanB: np.ndarray
     Z_tanB: np.ndarray
 
+    @property
+    def x_piv(self) -> float:
+        """Abscissa do PIV a partir do PCV (no assimétrico, l1)."""
+        return self.l1
+
+    def greide_em(self, x: float) -> float:
+        """Cota do greide (curva) a `x` metros do PCV, por trecho (0 ≤ x ≤ L)."""
+        g = self.i1 - self.i2
+        if x <= self.l1:
+            k1 = g * self.l2 / (2 * self.L * self.l1)
+            return self.Z_A + self.i1 * x - k1 * x ** 2
+        k2 = g * self.l1 / (2 * self.L * self.l2)
+        return self.Z_B + self.i2 * (x - self.L) - k2 * (x - self.L) ** 2
+
+    def tangente_em(self, x: float) -> float:
+        """Cota da rampa tangente de referência (i1 antes do PIV, i2 depois)."""
+        if x <= self.l1:
+            return self.Z_A + self.i1 * x
+        return self.Z_B + self.i2 * (x - self.L)
+
 
 def calcular_curva_vertical_assimetrica(
     Z_I: float,
