@@ -1,0 +1,194 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[margin=2.5cm]{geometry}
+
+\title{Projeto Geométrico de Vias \\ \large Concordância Vertical --- referência de cálculo}
+\author{Material didático}
+\date{}
+
+\newcommand{\m}{\,\text{m}}
+
+\begin{document}
+\maketitle
+
+\section{Definições e convenções}
+
+\begin{itemize}
+  \item \textbf{Greide:} perfil longitudinal (projeção vertical do eixo).
+  \item \textbf{Pontos notáveis:} $A$ = PCV (início da curva), $I$ = PIV
+        (interseção das tangentes, ou \emph{ápice}), $B$ = PTV (fim da curva).
+  \item \textbf{Rampas:} $i_1$ (em $A$) e $i_2$ (em $B$), em decimal e \emph{com
+        sinal}. Curva \textbf{convexa} (crista): $g=i_1-i_2>0$; \textbf{côncava}
+        (sag): $g<0$.
+  \item \textbf{$L$:} comprimento da curva (projeção horizontal).
+  \item \textbf{$Z_I$:} cota do \textbf{PIV} (ápice / interseção das tangentes).
+        Esta é a referência de entrada adotada.
+  \item \textbf{Flecha (máxima) $e$:} afastamento vertical entre o PIV e o greide,
+        medido sob o PIV. Convexa: $e>0$; côncava: $e<0$ (distância geométrica: $|e|$).
+  \item \textbf{Estaca:} 20\m, na notação ``inteira $+$ fração'' (ex.: $39+10{,}00$).
+\end{itemize}
+
+\section{Curva vertical simétrica}
+
+O PIV está no meio da curva, $x_I = L/2$.
+\[
+g = i_1 - i_2, \qquad e = \frac{L}{8}\,g,
+\]
+\[
+y(x) = i_1 x - \frac{g}{2L}\,x^2, \qquad Z(x) = Z_A + y(x).
+\]
+Cotas notáveis, ancoradas no PIV:
+\[
+\boxed{\,Z_A = Z_I - i_1\frac{L}{2}\,}, \qquad
+\boxed{\,Z_B = Z_I + i_2\frac{L}{2}\,}, \qquad
+\boxed{\,Z_M = Z_I - e\,}\ \ (\text{greide em } x=L/2).
+\]
+Vértice (ponto de declividade nula, máximo/mínimo do greide):
+\[
+x_V = \frac{i_1 L}{g}, \qquad Z_V = Z_A + \frac{i_1^2 L}{2g}.
+\]
+Tangentes: $Z_{\mathrm{tg},A}(x)=Z_A+i_1 x$ e $Z_{\mathrm{tg},B}(x)=Z_B+i_2(x-L)$;
+cruzam-se em $(L/2,\,Z_I)$.
+
+\section{Curva vertical assimétrica}
+
+Dois trechos parabólicos de comprimentos $l_1$ (PCV$\to$PIV) e $l_2$
+(PIV$\to$PTV), com $L=l_1+l_2$ e PIV em $x_I=l_1$.
+\[
+g = i_1 - i_2, \qquad e = \frac{l_1 l_2}{2L}\,g, \qquad
+s = \frac{i_1 l_1 + i_2 l_2}{L},
+\]
+em que $s$ é a declividade comum do greide no ponto sob o PIV. Cotas notáveis:
+\[
+\boxed{\,Z_A = Z_I - i_1 l_1\,}, \qquad
+\boxed{\,Z_B = Z_I + i_2 l_2\,}, \qquad
+\boxed{\,Z_F = Z_I - e\,}\ \ (\text{greide sob o PIV}).
+\]
+Greide por trecho:
+\[
+Z(x) = Z_A + i_1 x - \frac{g\,l_2}{2L\,l_1}\,x^2, \qquad 0 \le x \le l_1,
+\]
+\[
+Z(x) = Z_B + i_2 (x-L) - \frac{g\,l_1}{2L\,l_2}\,(x-L)^2, \qquad l_1 \le x \le L.
+\]
+Vértice: testa-se o trecho~1, $x_V = \dfrac{i_1 L l_1}{g\,l_2}$ se $0\le x_V\le l_1$;
+caso contrário o trecho~2, $x_V = L + \dfrac{i_2 L l_2}{g\,l_1}$ se $l_1\le x_V\le L$.
+Para $l_1=l_2=L/2$ recupera-se a curva simétrica ($e=\tfrac{L}{8}g$).
+
+\section{Estaqueamento}
+
+Estaca de 20\m. Lança-se a cota do greide nas \textbf{estacas inteiras} (20\m),
+nas \textbf{intermediárias} (10\m) e nos \textbf{pontos notáveis} (PCV, PIV, PTV),
+mesmo em fração. Para cada estaca, com $x$ medido a partir do PCV ($0\le x\le L$):
+a cota do greide é $Z(x)$; a cota na rampa tangente de referência ($i_1$ antes do
+PIV, $i_2$ depois) é $Z_{\mathrm{tg}}$; e a flecha local é $Z_{\mathrm{tg}}-Z(x)$.
+No PIV registram-se \emph{duas} cotas: a do ápice ($Z_I$) e a do greide ($Z_I-e$).
+
+\section{Tabelas-resumo}
+
+\begin{table}[h]
+\centering
+\caption{Curva simétrica (ancorada no PIV $Z_I$).}
+\begin{tabular}{ll}
+\toprule
+Elemento & Fórmula \\
+\midrule
+Desnível das rampas & $g = i_1 - i_2$ \\
+Flecha máxima & $e = \dfrac{L}{8}\,g$ \\
+Cota do PCV ($A$) & $Z_A = Z_I - i_1\dfrac{L}{2}$ \\
+Cota do PTV ($B$) & $Z_B = Z_I + i_2\dfrac{L}{2}$ \\
+Greide no ponto médio & $Z_M = Z_I - e$ \\
+Abscissa do vértice & $x_V = \dfrac{i_1 L}{g}$ \\
+Cota do vértice & $Z_V = Z_A + \dfrac{i_1^2 L}{2g}$ \\
+Greide em $x$ & $Z(x) = Z_A + i_1 x - \dfrac{g}{2L}\,x^2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Curva assimétrica (ancorada no PIV $Z_I$).}
+\begin{tabular}{ll}
+\toprule
+Elemento & Fórmula \\
+\midrule
+Desnível das rampas & $g = i_1 - i_2$ \\
+Comprimento total & $L = l_1 + l_2$ \\
+Flecha & $e = \dfrac{l_1 l_2}{2L}\,g$ \\
+Declividade sob o PIV & $s = \dfrac{i_1 l_1 + i_2 l_2}{L}$ \\
+Cota do PCV ($A$) & $Z_A = Z_I - i_1 l_1$ \\
+Cota do PTV ($B$) & $Z_B = Z_I + i_2 l_2$ \\
+Greide sob o PIV & $Z_F = Z_I - e$ \\
+Greide, trecho 1 ($0\le x\le l_1$) & $Z = Z_A + i_1 x - \dfrac{g\,l_2}{2L l_1}\,x^2$ \\
+Greide, trecho 2 ($l_1\le x\le L$) & $Z = Z_B + i_2(x-L) - \dfrac{g\,l_1}{2L l_2}\,(x-L)^2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Exemplos numéricos}
+
+\subsection*{Simétrico}
+$i_1=2{,}5\%$, $i_2=-1{,}0\%$ (convexa), $L=120\m$, $Z_I=201{,}725\m$ (ápice).
+\[
+g=0{,}035,\quad e=0{,}525\m,\quad Z_A=200{,}225\m,\quad Z_B=201{,}125\m,
+\]
+\[
+Z_M=Z_I-e=201{,}200\m,\quad x_V=85{,}714\m,\quad Z_V=201{,}296\m.
+\]
+
+\subsection*{Assimétrico}
+$i_1=3{,}0\%$, $i_2=-1{,}0\%$ (convexa), $l_1=80\m$, $l_2=120\m$, $Z_I=500{,}000\m$.
+\[
+L=200\m,\quad g=0{,}040,\quad e=0{,}960\m,\quad s=0{,}6\%,
+\]
+\[
+Z_A=497{,}600\m,\quad Z_B=498{,}800\m,\quad Z_F=Z_I-e=499{,}040\m,
+\]
+\[
+x_V=125{,}000\m,\quad Z_V=499{,}175\m.
+\]
+
+\subsection*{Estaqueamento (simétrico)}
+$i_1=4{,}0\%$, $i_2=-2{,}0\%$, $L=80\m$, $Z_I=300{,}000\m$ (ápice), PIV na
+estaca $25+0{,}00$. Então $e=0{,}600\m$, $Z_A=298{,}400$, $Z_B=299{,}200$ e
+$Z_M=299{,}400$.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrl}
+\toprule
+Estaca & $x$ (m) & Greide (m) & Flecha (m) & Ponto \\
+\midrule
+$23+00{,}00$ &  0 & 298{,}400 & 0{,}000 & PCV \\
+$23+10{,}00$ & 10 & 298{,}762 & 0{,}038 & interm. \\
+$24+00{,}00$ & 20 & 299{,}050 & 0{,}150 & inteira \\
+$24+10{,}00$ & 30 & 299{,}262 & 0{,}338 & interm. \\
+$25+00{,}00$ & 40 & 299{,}400 & 0{,}600 & PIV \\
+$25+10{,}00$ & 50 & 299{,}462 & 0{,}338 & interm. \\
+$26+00{,}00$ & 60 & 299{,}450 & 0{,}150 & inteira \\
+$26+10{,}00$ & 70 & 299{,}363 & 0{,}038 & interm. \\
+$27+00{,}00$ & 80 & 299{,}200 & 0{,}000 & PTV \\
+\bottomrule
+\end{tabular}
+\caption{Cotas do greide por estaca. No PIV, a cota do ápice é $300{,}000$ e a do
+greide é $299{,}400$ (diferença $=e$).}
+\end{table}
+
+\section*{Apêndice --- reconciliação com a forma antiga}
+
+Em deduções que tomam o valor de entrada como o \emph{greide no ponto médio}
+$Z_M$, obtém-se $Z_A = Z_M - i_1 L/2 + e$. Como o PIV (ápice) está a flecha $e$
+acima do greide, vale $Z_I = Z_M + e$. Substituindo $Z_M = Z_I - e$, o termo $e$
+se cancela e recupera-se a forma ancorada no PIV:
+\[
+Z_A = (Z_I - e) - i_1\frac{L}{2} + e = Z_I - i_1\frac{L}{2}.
+\]
+Ou seja, o ``$+e$'' que aparece em algumas referências decorre de ancorar em $Z_M$;
+ao adotar $Z_I$ como a cota do PIV (ápice), ele não comparece.
+
+\end{document}

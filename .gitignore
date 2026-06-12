@@ -14,10 +14,18 @@ build/
 dist/
 *.spec
 
+# LaTeX (auxiliares de compilação)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
 # Sistema / editores
 .DS_Store
 .vscode/
 .idea/
+*Zone.Identifier
 
 # Saídas geradas
 *.png
