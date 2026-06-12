@@ -35,8 +35,8 @@ class ResultadoCurvaVertical:
     e: float            # flecha vertical
     Z_A: float          # cota do PCV (ponto A)
     Z_B: float          # cota do PTV (ponto B)
-    Z_I_parab: float    # cota do ponto médio sobre a parábola (confere com Z_I de entrada)
-    Z_PIV: float        # cota do PIV (interseção das tangentes; afastada da curva pela flecha e)
+    Z_I_parab: float    # cota do greide no ponto médio (x = L/2) = Z_I − e
+    Z_PIV: float        # cota do PIV / ápice (interseção das tangentes) = Z_I
     x_V: float          # abscissa do vértice da parábola
     y_V: float          # ordenada do vértice em relação a A
     Z_V: float          # cota do vértice
@@ -109,11 +109,11 @@ def calcular_curva_vertical(
     g = i1 - i2
     e = (L / 8) * g
 
-    # Cotas dos pontos notáveis
-    Z_A = Z_I - i1 * (L / 2) + e          # PCV (ponto A)
+    # Cotas dos pontos notáveis (Z_I é a cota do PIV / ápice das tangentes)
+    Z_A = Z_I - i1 * (L / 2)              # PCV (ponto A)
     Z_B = Z_A + ((i1 + i2) / 2) * L       # PTV (ponto B)
-    Z_I_parab = Z_A + i1 * (L / 2) - e    # ponto médio sobre a parábola
-    Z_PIV = Z_A + i1 * (L / 2)            # PIV: interseção das tangentes (em x = L/2)
+    Z_PIV = Z_A + i1 * (L / 2)            # PIV: interseção das tangentes (= Z_I)
+    Z_I_parab = Z_PIV - e                 # greide no ponto médio (x = L/2) = Z_I − e
 
     # Vértice da parábola (ponto de inclinação nula)
     if g != 0:

@@ -98,8 +98,8 @@ class App(tk.Tk):
             f"Flecha e = {r.e:.4f} m\n"
             f"Z_A (PCV) = {r.Z_A:.3f} m\n"
             f"Z_B (PTV) = {r.Z_B:.3f} m\n"
-            f"Z_PIV (tangentes) = {r.Z_PIV:.3f} m\n"
-            f"Z ponto médio = {r.Z_I_parab:.3f} m\n"
+            f"Z_PIV (ápice) = {r.Z_PIV:.3f} m\n"
+            f"Z greide no meio = {r.Z_I_parab:.3f} m\n"
             f"x_V = {r.x_V:.3f} m\n"
             f"Z_V = {r.Z_V:.3f} m\n"
         )

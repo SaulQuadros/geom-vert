@@ -43,9 +43,7 @@ with st.sidebar:
     Z_I = st.number_input(
         "Cota do PIV — Z_I (m)",
         value=500.0, step=0.1, format="%.3f",
-        help=("Assimétrica: cota do ápice (interseção das tangentes)."
-              if assimetrica else
-              "Simétrica: cota da curva (greide) na estação do PIV."),
+        help="Cota do PIV (ápice / interseção das tangentes). O greide passa e abaixo.",
     )
     i1_pct = st.number_input("Magnitude de i₁ (%)", value=3.0, min_value=0.0, step=0.1)
     i2_pct = st.number_input(
@@ -129,8 +127,8 @@ with col_res:
                 "Elemento": [
                     "Cota de A (PCV): Z_A",
                     "Cota de B (PTV): Z_B",
-                    "Cota do PIV (tangentes): Z_PIV",
-                    "Cota do ponto médio na parábola",
+                    "Cota do PIV (ápice): Z_PIV",
+                    "Cota do greide no ponto médio: Z_M",
                     "Abscissa do vértice: x_V",
                     "Cota do vértice: Z_V",
                 ],
@@ -145,8 +143,8 @@ with col_res:
             }
         )
         st.table(tabela)
-        st.caption("O PIV é a interseção das tangentes; afasta-se da curva pela flecha e. "
-                   "O ponto médio sobre a parábola coincide com o Z_I de entrada.")
+        st.caption("Z_I é a cota do PIV (ápice / interseção das tangentes). "
+                   "O greide no ponto médio fica e abaixo: Z_M = Z_I − e.")
 
 with st.expander("📖 Fórmulas utilizadas"):
     if assimetrica:
@@ -159,7 +157,8 @@ with st.expander("📖 Fórmulas utilizadas"):
                  r"\quad (l_1 \le x \le L)")
     else:
         st.latex(r"g = i_1 - i_2 \qquad e = \frac{L}{8}\,g")
-        st.latex(r"Z_A = Z_I - i_1\frac{L}{2} + e \qquad Z_B = Z_A + \frac{i_1 + i_2}{2}\,L")
+        st.latex(r"Z_A = Z_I - i_1\frac{L}{2} \qquad Z_B = Z_I + i_2\frac{L}{2}")
+        st.latex(r"Z_M = Z_I - e \quad(\text{greide em } x = L/2)")
         st.latex(r"x_V = \frac{i_1\,L}{g} \qquad Z_V = Z_A + \frac{i_1^2\,L}{2\,g}")
         st.latex(r"Z(x) = Z_A + i_1 x - \frac{g}{2L}\,x^2")
 
