@@ -1,0 +1,62 @@
+% Correção da parte simétrica — Concordância Vertical (PDF 08)
+% Substitui a ancoragem em Z_I (que, de fato, era o ponto médio Z_M) pela
+% ancoragem correta no PIV (ápice). Trecho em LaTeX (amsmath) pronto para colar.
+
+\section*{Cotas de A (PCV) e B (PTV): ancoragem em $Z_M$ e no PIV $Z_I$}
+
+Seja uma parábola de concordância vertical de comprimento $L$, com rampas de
+inclinação $i_1$ (em A) e $i_2$ (em B). Defina
+\[
+g = i_1 - i_2, \qquad e = \frac{L}{8}\,g,
+\]
+a equação da parábola (origem em A) e a cota absoluta:
+\[
+y(x) = i_1 x - \frac{i_1 - i_2}{2L}\,x^2, \qquad Z(x) = Z_A + y(x).
+\]
+
+\subsection*{1. Ancorando no ponto médio do greide $Z_M$ \,($x = L/2$)}
+
+A cota do greide no meio da curva é
+\[
+Z_M = Z\!\left(\tfrac{L}{2}\right) = Z_A + i_1\frac{L}{2} - e
+\;\Longrightarrow\;
+\boxed{\,Z_A = Z_M - i_1\frac{L}{2} + e\,}.
+\]
+Ancorando B em A (sem o termo $e$):
+\[
+\boxed{\,Z_B = Z_A + \frac{i_1+i_2}{2}\,L\,}
+\qquad\left(= Z_M + i_2\frac{L}{2} + e\right).
+\]
+
+\subsection*{2. Relação entre $Z_M$ e o PIV (ápice) $Z_I$}
+
+O PIV é a interseção das tangentes, na vertical de $x=L/2$, e situa-se a flecha
+$e$ acima do greide:
+\[
+\boxed{\,Z_I = Z_M + e \;\Longleftrightarrow\; Z_M = Z_I - e\,}.
+\]
+
+\subsection*{3. Reancorando no PIV $Z_I$ (forma correta)}
+
+Substituindo $Z_M = Z_I - e$ nas expressões da Seção~1, o termo $e$ se cancela:
+\[
+Z_A = (Z_I - e) - i_1\frac{L}{2} + e
+\;\Longrightarrow\;
+\boxed{\,Z_A = Z_I - i_1\frac{L}{2}\,},
+\]
+\[
+Z_B = (Z_I - e) + i_2\frac{L}{2} + e
+\;\Longrightarrow\;
+\boxed{\,Z_B = Z_I + i_2\frac{L}{2}\,}.
+\]
+
+\paragraph{Exemplo numérico ($i_1=2{,}5\%$, $i_2=-1{,}0\%$, $L=120$~m, $e=0{,}525$~m).}
+Tomando $Z_M = 201{,}20$~m: $\;Z_A = 200{,}225$~m e $Z_B = 201{,}125$~m.
+Como $Z_I = Z_M + e = 201{,}725$~m, a forma ancorada no PIV fornece os mesmos
+$Z_A = 200{,}225$~m e $Z_B = 201{,}125$~m. A curva é a mesma; muda apenas a
+referência de entrada — greide $Z_M$ ou ápice $Z_I$.
+
+\paragraph{Observação.}
+A versão anterior escrevia $Z_A = Z_I - i_1\,L/2 + e$, chamando de $Z_I$ aquilo
+que, de fato, é $Z_M$ (greide no ponto médio). Tomando $Z_I$ como o PIV (ápice),
+a forma correta é $Z_A = Z_I - i_1\,L/2$, \emph{sem} o $+e$.

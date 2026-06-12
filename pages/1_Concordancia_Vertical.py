@@ -156,11 +156,24 @@ with st.expander("📖 Fórmulas utilizadas"):
         st.latex(r"Z(x) = Z_B + i_2 (x - L) - \frac{(i_1 - i_2)\,l_1}{2L\,l_2}\,(x - L)^2"
                  r"\quad (l_1 \le x \le L)")
     else:
+        st.markdown("**Equações gerais**")
         st.latex(r"g = i_1 - i_2 \qquad e = \frac{L}{8}\,g")
+        st.latex(r"y(x) = i_1 x - \frac{i_1 - i_2}{2L}\,x^2 \qquad Z(x) = Z_A + y(x)")
+
+        st.markdown("**1. Ancorando no ponto médio do greide $Z_M$ (x = L/2)**")
+        st.latex(r"Z_M = Z_A + i_1\frac{L}{2} - e \;\Rightarrow\; Z_A = Z_M - i_1\frac{L}{2} + e")
+        st.latex(r"Z_B = Z_A + \frac{i_1 + i_2}{2}\,L")
+
+        st.markdown("**2. Relação entre $Z_M$ e o PIV (ápice) $Z_I$**")
+        st.latex(r"Z_I = Z_M + e \quad\Longleftrightarrow\quad Z_M = Z_I - e")
+
+        st.markdown("**3. Reancorando no PIV $Z_I$ — o $e$ se cancela**")
         st.latex(r"Z_A = Z_I - i_1\frac{L}{2} \qquad Z_B = Z_I + i_2\frac{L}{2}")
-        st.latex(r"Z_M = Z_I - e \quad(\text{greide em } x = L/2)")
+
+        st.markdown("**Vértice da parábola**")
         st.latex(r"x_V = \frac{i_1\,L}{g} \qquad Z_V = Z_A + \frac{i_1^2\,L}{2\,g}")
-        st.latex(r"Z(x) = Z_A + i_1 x - \frac{g}{2L}\,x^2")
+        st.caption("O app ancora no PIV (Z_I = ápice). No PDF 08 o mesmo Z_A aparece "
+                   "com +e porque ali o valor digitado é, na verdade, o Z_M (greide no meio).")
 
 # --- Estaqueamento ----------------------------------------------------------
 with st.expander("📍 Estaqueamento (cotas das estacas)"):
