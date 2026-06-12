@@ -29,4 +29,4 @@ dist/
 
 # Saídas geradas
 *.png
-!z_docs/**
+!z_docs/**/*.png

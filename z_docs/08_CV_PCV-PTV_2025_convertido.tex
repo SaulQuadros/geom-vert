@@ -1,0 +1,834 @@
+% !TeX program = lualatex
+% Conversão do documento Word 08_CV_PCV-PTV_2025.docx para LaTeX.
+% Compilar preferencialmente com LuaLaTeX ou XeLaTeX.
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{fontspec}
+\IfFontExistsTF{Trebuchet MS}{\setmainfont{Trebuchet MS}}{\setmainfont{Noto Sans}}
+\IfFontExistsTF{Microsoft Sans Serif}{\newfontfamily\msfont{Microsoft Sans Serif}}{\newfontfamily\msfont{Noto Sans}}
+\newfontfamily\trebfont{Noto Sans}
+\IfFontExistsTF{Trebuchet MS}{\renewfontfamily\trebfont{Trebuchet MS}}{\renewfontfamily\trebfont{Noto Sans}}
+
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{array}
+
+% Configuração de página observada no Word: Letter, margens aprox. 2,54 cm laterais,
+% 3,00 cm superior e 1,76 cm inferior.
+\geometry{letterpaper,left=2.54cm,right=2.54cm,top=3.00cm,bottom=1.76cm}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setstretch{1.05}
+\justifying
+
+% Estilos de títulos aproximados aos estilos do Word.
+\titleformat{\section}
+  {\trebfont\fontsize{18}{22}\selectfont\bfseries\justifying}{}{0pt}{}
+\titlespacing*{\section}{0pt}{3.8pt}{8pt}
+
+\titleformat{\subsection}
+  {\msfont\fontsize{17}{21}\selectfont\bfseries\justifying}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{4pt}{6pt}
+
+\titleformat{\subsubsection}
+  {\trebfont\fontsize{16}{20}\selectfont\bfseries\justifying}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{4pt}{5pt}
+
+\titleformat{\paragraph}
+  {\msfont\fontsize{14}{18}\selectfont\bfseries}{}{0pt}{}
+\titlespacing*{\paragraph}{0pt}{5pt}{4pt}
+
+\setlist[itemize]{label=\textbullet,leftmargin=1.25cm,itemsep=2pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=1.25cm,itemsep=2pt,topsep=4pt}
+
+\newenvironment{corpo}{\begin{adjustwidth}{0.46cm}{0.45cm}\justifying}{\end{adjustwidth}}
+\newcommand{\m}[1]{\ensuremath{#1}}
+
+\begin{document}
+
+\section*{Relacionando as cotas de A (PCV) e B (PTV) a partir do PIV}
+
+\begin{corpo}
+Seja uma parábola de concordância vertical de comprimento $L$, com tangentes de inclinação $i_1$ (em A) e $i_2$ (em B), sendo o PIV (I) o ponto médio da curva ($x_I = L/2$). Sabendo a cota $Z_I$ do PIV, podemos determinar as cotas dos pontos $A$ (PCV) e $B$ (PTV) (Figura):
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{figuras/figura_parabola_piv_pcv_ptv.png}
+\end{figure}
+\end{corpo}
+
+\subsubsection*{Equações gerais}
+
+\begin{corpo}
+A equação da parábola (com origem em $A$) é:
+\[
+ y(x)=i_1x-\frac{(i_1-i_2)x^2}{2L}
+\]
+
+A cota absoluta ao longo da parábola:
+\[
+ Z(x)=Z_A+y(x)
+\]
+
+Cota do PIV ($x_I=L/2$):
+\[
+\begin{aligned}
+Z_I
+&=Z_A+y\left(\frac{L}{2}\right) \\
+&=Z_A+i_1\frac{L}{2}-\frac{(i_1-i_2)}{2L}\left(\frac{L}{2}\right)^2 \\
+&=Z_A+i_1\frac{L}{2}-\frac{(i_1-i_2)L}{8}.
+\end{aligned}
+\]
+
+\paragraph*{Isolando $Z_A$:}
+\[
+ Z_A=Z_I-i_1\frac{L}{2}+\frac{(i_1-i_2)L}{8}
+\]
+
+Cota de $B$ (PTV, $x=L$):
+\[
+\begin{aligned}
+y(L)&=i_1L-\frac{(i_1-i_2)L^2}{2L} \\
+&=i_1L-\frac{(i_1-i_2)L}{2} \\
+&=\frac{(i_1+i_2)L}{2}.
+\end{aligned}
+\]
+
+Portanto,
+\[
+ Z_B=Z_A+\frac{(i_1+i_2)L}{2}
+\]
+
+Ou, substituindo $Z_A$:
+\[
+ Z_B=Z_I-i_1\frac{L}{2}+\frac{(i_1-i_2)L}{8}+\frac{(i_1+i_2)L}{2}
+\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{figuras/figura_perfil_longitudinal_convexa.jpeg}
+\end{figure}
+\end{corpo}
+
+\section*{Relação com a flecha vertical $e$ e da cota do PIV}
+
+\begin{corpo}
+Vamos repetir a demonstração anterior. Para isso, considere novamente uma curva de concordância vertical do tipo parábola simples, de comprimento $L$, com rampas tangentes de inclinação $i_1$ (em A) e $i_2$ (em B), e $I$ (PIV) sendo o ponto médio da curva ($x_I=L/2$). A flecha vertical $e$ pode ser calculada por:
+\[
+ e=\frac{L}{8}(i_1-i_2)
+\]
+
+A equação da parábola (com origem em $A$) é:
+\[
+ y(x)=i_1x-\frac{(i_1-i_2)x^2}{2L}
+\]
+
+A cota absoluta ao longo da parábola é:
+\[
+ Z(x)=Z_A+y(x)
+\]
+\end{corpo}
+
+\subsubsection*{Cota do ponto $I$ (PIV)}
+
+\begin{corpo}
+Para $x_I=L/2$, temos:
+\[
+\begin{aligned}
+y\left(\frac{L}{2}\right)
+&=i_1\frac{L}{2}-\frac{(i_1-i_2)}{2L}\left(\frac{L}{2}\right)^2 \\
+&=i_1\frac{L}{2}-\frac{(i_1-i_2)L}{8} \\
+&=i_1\frac{L}{2}-e.
+\end{aligned}
+\]
+
+Logo,
+\[
+ Z_I=Z_A+i_1\frac{L}{2}-e
+\]
+
+Isolando $Z_A$ em função de $Z_I$ e $e$:
+\[
+ Z_A=Z_I-i_1\frac{L}{2}+e
+\]
+\end{corpo}
+
+\subsubsection*{Cota do ponto $B$ (PTV)}
+
+\begin{corpo}
+Para $x=L$:
+\[
+\begin{aligned}
+y(L)&=i_1L-\frac{(i_1-i_2)L^2}{2L} \\
+&=i_1L-\frac{(i_1-i_2)L}{2} \\
+&=\frac{(i_1+i_2)L}{2}.
+\end{aligned}
+\]
+
+Portanto,
+\[
+ Z_B=Z_A+\frac{(i_1+i_2)L}{2}
+\]
+
+Substituindo $Z_A$:
+\[
+ Z_B=Z_I-i_1\frac{L}{2}+e+\frac{(i_1+i_2)L}{2}
+\]
+\end{corpo}
+
+\subsubsection*{Resumo das Equações}
+
+\begin{corpo}
+\[
+ Z_A=Z_I-i_1\frac{L}{2}+e
+\]
+\[
+ Z_B=Z_I-i_1\frac{L}{2}+e+\frac{(i_1+i_2)L}{2}
+\]
+
+onde
+\[
+ e=\frac{L}{8}(i_1-i_2).
+\]
+
+As duas formas de calcular as cotas de A e B nos levam ao mesmo resultado, sendo apenas explicitado em termos de $e$ a segunda opção.
+\end{corpo}
+
+\subsubsection*{Exemplo Numérico}
+
+\begin{corpo}
+Considere:
+\begin{itemize}
+    \item $i_1=+2{,}5\%=0{,}025$;
+    \item $i_2=-1{,}0\%=-0{,}010$;
+    \item $L=120\,\text{m}$;
+    \item $Z_I=201{,}20\,\text{m}$.
+\end{itemize}
+
+Cálculo de $Z_A$:
+\[
+\begin{aligned}
+Z_A
+&=201{,}20-0{,}025\cdot 60+\frac{(0{,}025-(-0{,}010))\cdot 120}{8} \\
+&=201{,}20-1{,}50+\frac{0{,}035\cdot 120}{8} \\
+&=201{,}20-1{,}50+\frac{4{,}20}{8} \\
+&=201{,}20-1{,}50+0{,}525 \\
+&=200{,}225\,\text{m}.
+\end{aligned}
+\]
+
+Cálculo de $Z_B$:
+\[
+\begin{aligned}
+Z_B
+&=201{,}20-0{,}025\cdot 60+\frac{(0{,}025-(-0{,}010))\cdot 120}{8}
+  +\frac{(0{,}025+(-0{,}010))\cdot 120}{2} \\
+&=201{,}20-1{,}50+0{,}525+\frac{0{,}015\cdot 120}{2} \\
+&=201{,}20-1{,}50+0{,}525+0{,}90 \\
+&=201{,}20-1{,}50+1{,}425 \\
+&=201{,}125\,\text{m}.
+\end{aligned}
+\]
+
+Resumo:
+\begin{itemize}
+    \item $Z_A=200{,}225\,\text{m}$;
+    \item $Z_I=201{,}20\,\text{m}$;
+    \item $Z_B=201{,}125\,\text{m}$.
+\end{itemize}
+\end{corpo}
+
+\section*{Simetria das Cotas de A (PCV) e B (PTV) para $|i_1|=|i_2|$}
+
+\begin{corpo}
+Suponha que as inclinações das rampas sejam simétricas em módulo, ou seja, $i_1=-i_2$, com $i_1>0$ e $i_2<0$. A equação geral para as cotas dos pontos extremos, obtida anteriormente, é:
+\[
+ Z_A=Z_I-\frac{i_1L}{2}+\frac{(i_1-i_2)L}{8}
+\]
+\[
+ Z_B=Z_A+\frac{(i_1+i_2)L}{2}
+\]
+
+Substituindo $i_2=-i_1$:
+\[
+ i_1-i_2=i_1-(-i_1)=2i_1
+\]
+\[
+ i_1+i_2=i_1+(-i_1)=0
+\]
+
+Assim,
+\[
+\begin{aligned}
+Z_A
+&=Z_I-\frac{i_1L}{2}+\frac{2i_1L}{8} \\
+&=Z_I-\frac{i_1L}{2}+\frac{i_1L}{4} \\
+&=Z_I-\frac{2i_1L}{4}+\frac{i_1L}{4} \\
+&=Z_I-\frac{i_1L}{4}.
+\end{aligned}
+\]
+
+\[
+ Z_B=Z_A+0=Z_A
+\]
+\end{corpo}
+
+\subsubsection*{Conclusão}
+
+\begin{corpo}
+Quando $i_1=-i_2$, as cotas de A (PCV) e B (PTV) são sempre iguais:
+\[
+ Z_B=Z_A=Z_I-\frac{i_1L}{4}
+\]
+\end{corpo}
+
+\subsubsection*{Exemplo Numérico}
+
+\begin{corpo}
+Sejam:
+\begin{itemize}
+    \item $i_1=+2{,}5\%=0{,}025$;
+    \item $i_2=-2{,}5\%=-0{,}025$;
+    \item $L=100\,\text{m}$;
+    \item $Z_I=250{,}00\,\text{m}$.
+\end{itemize}
+
+\[
+\begin{aligned}
+Z_A
+&=250{,}00-\frac{0{,}025\times 100}{4} \\
+&=250{,}00-\frac{2{,}5}{4} \\
+&=250{,}00-0{,}625 \\
+&=249{,}375\,\text{m}.
+\end{aligned}
+\]
+
+\[
+ Z_B=Z_A=249{,}375\,\text{m}
+\]
+
+Portanto, neste caso simétrico, a cota inicial $Z_A$ e a cota final $Z_B$ são exatamente iguais.
+\end{corpo}
+
+\section*{Vértice da parábola de concordância vertical}
+
+\begin{corpo}
+Considere a parábola de concordância vertical, definida por:
+\[
+ y(x)=i_1x-\frac{(i_1-i_2)x^2}{2L}
+\]
+
+onde:
+\begin{itemize}
+    \item $i_1$ = inclinação inicial (em $x=0$);
+    \item $i_2$ = inclinação final (em $x=L$);
+    \item $L$ = comprimento da curva.
+\end{itemize}
+
+O ponto de máximo ou mínimo da parábola ocorre no vértice $(x_0,y_0)$.
+\end{corpo}
+
+\subsubsection*{Cálculo do vértice}
+
+\begin{corpo}
+\textbf{1. Valor de $x_0$ (posição do vértice):}
+
+O vértice é obtido anulando a derivada de $y(x)$:
+\[
+\frac{dy}{dx}=i_1-\frac{(i_1-i_2)}{L}x=0
+\]
+\[
+\frac{(i_1-i_2)}{L}x_0=i_1
+\]
+\[
+ x_0=\frac{i_1L}{i_1-i_2}
+\]
+
+\textbf{2. Valor de $y_0$ (valor da parábola no vértice):}
+\[
+\begin{aligned}
+y_0&=y(x_0)=i_1x_0-\frac{(i_1-i_2)}{2L}x_0^2 \\
+&=i_1\left(\frac{i_1L}{i_1-i_2}\right)
+-\frac{(i_1-i_2)}{2L}\left(\frac{i_1L}{i_1-i_2}\right)^2 \\
+&=\frac{i_1^2L}{i_1-i_2}-\frac{i_1^2L}{2(i_1-i_2)} \\
+&=\frac{i_1^2L}{2(i_1-i_2)}.
+\end{aligned}
+\]
+
+Resumo final:
+\[
+ x_0=\frac{i_1L}{i_1-i_2}
+\]
+\[
+ y_0=\frac{i_1^2L}{2(i_1-i_2)}
+\]
+\end{corpo}
+
+\section*{Vértice da parábola: posição e cota absoluta}
+
+\begin{corpo}
+Considere a parábola de concordância vertical para alinhamentos em projetos de vias, com equação relativa:
+\[
+ y(x)=i_1x-\frac{(i_1-i_2)x^2}{2L}
+\]
+
+onde:
+\begin{itemize}
+    \item $i_1$: inclinação da rampa tangente no ponto $A$ (PCV, $x=0$);
+    \item $i_2$: inclinação da rampa tangente no ponto $B$ (PTV, $x=L$);
+    \item $L$: comprimento da curva de concordância.
+\end{itemize}
+
+A cota absoluta em qualquer ponto da parábola é:
+\[
+ Z(x)=Z_A+y(x)
+\]
+
+onde $Z_A$ é a cota inicial no ponto $A$ (PCV).
+\end{corpo}
+
+\subsubsection*{Coordenadas do vértice da parábola (máximo ou mínimo)}
+
+\begin{corpo}
+O vértice, $(x_0,y_0)$, ocorre onde a derivada de $y(x)$ é nula:
+\[
+\frac{dy}{dx}=i_1-\frac{(i_1-i_2)}{L}x
+\]
+\[
+ x_0=\frac{i_1L}{i_1-i_2}
+\]
+
+O valor de $y$ nesse ponto é:
+\[
+\begin{aligned}
+y_0&=y(x_0)=i_1x_0-\frac{(i_1-i_2)}{2L}x_0^2 \\
+&=i_1\left(\frac{i_1L}{i_1-i_2}\right)
+-\frac{(i_1-i_2)}{2L}\left(\frac{i_1L}{i_1-i_2}\right)^2 \\
+&=\frac{i_1^2L}{i_1-i_2}-\frac{i_1^2L}{2(i_1-i_2)} \\
+&=\frac{i_1^2L}{2(i_1-i_2)}.
+\end{aligned}
+\]
+
+A cota absoluta do vértice é:
+\[
+ Z_0=Z_A+y_0=Z_A+\frac{i_1^2L}{2(i_1-i_2)}
+\]
+\end{corpo}
+
+\subsubsection*{Relação com PIV (I) e extremos da curva}
+
+\begin{corpo}
+\begin{itemize}
+    \item O PIV (I) — ponto de interseção das tangentes das rampas — costuma ser localizado em $x=L/2$ (curva simétrica), mas o vértice da parábola, em geral, não coincide com o PIV.
+    \item Os pontos extremos são:
+\end{itemize}
+
+Em $A$ (PCV, $x=0$):
+\[
+ Z_A
+\]
+
+Em $B$ (PTV, $x=L$):
+\[
+ Z_B=Z_A+\frac{(i_1+i_2)L}{2}
+\]
+
+\begin{itemize}
+    \item O vértice $(x_0,Z_0)$ pode estar entre $A$ e $B$ ($0<x_0<L$) ou fora desse intervalo, dependendo das inclinações.
+\end{itemize}
+\end{corpo}
+
+\subsubsection*{Resumo das fórmulas principais}
+
+\begin{corpo}
+\[
+ x_0=\frac{i_1L}{i_1-i_2}
+\]
+\[
+ y_0=\frac{i_1^2L}{2(i_1-i_2)}
+\]
+\[
+ Z_0=Z_A+\frac{i_1^2L}{2(i_1-i_2)}
+\]
+\end{corpo}
+
+\subsubsection*{Observações}
+
+\begin{corpo}
+\begin{itemize}
+    \item Se $i_1>i_2$, a parábola é convexa e o vértice é um máximo.
+    \item Se $i_1<i_2$, a parábola é côncava e o vértice é um mínimo.
+    \item Se $x_0$ está fora do intervalo $[0,L]$, o máximo/mínimo ocorre em um dos extremos.
+    \item O PIV (I), na forma simétrica usual, ocorre em $x=L/2$, e sua cota é $Z_I=Z_A+y(L/2)$.
+\end{itemize}
+
+Outra forma de analisar:
+\begin{itemize}
+    \item Se $0<x_0<L$, o vértice está entre $A$ e $B$.
+    \item Se $i_1>i_2$, a parábola é convexa e $y_0$ é máximo.
+    \item Se $i_1<i_2$, a parábola é côncava e $y_0$ é mínimo.
+    \item Se $i_1=i_2$, a curva é uma reta.
+\end{itemize}
+\end{corpo}
+
+\section*{Equações das retas tangentes em A (PCV) e B (PTV)}
+
+\begin{corpo}
+\begin{itemize}
+    \item Reta tangente em $A$ (PCV):
+\end{itemize}
+\[
+ Z_{\mathrm{tang},A}(x)=Z_A+i_1x
+\]
+
+onde $x$ é a abscissa a partir de $A$ e $Z_A$ a cota de $A$.
+
+\begin{itemize}
+    \item Reta tangente em $B$ (PTV):
+\end{itemize}
+\[
+ Z_{\mathrm{tang},B}(x)=Z_B+i_2(x-L)
+\]
+
+onde $x$ é a abscissa ao longo do eixo do projeto, $L$ o comprimento da curva e $Z_B$ a cota de $B$.
+\end{corpo}
+
+\section*{Demonstração do ponto de interseção das tangentes}
+
+\begin{corpo}
+As equações das tangentes são:
+\[
+ Z_{\mathrm{tang},A}(x)=Z_A+i_1x
+\]
+\[
+ Z_{\mathrm{tang},B}(x)=Z_B+i_2(x-L)
+\]
+
+com
+\[
+ Z_B=Z_A+\frac{(i_1+i_2)L}{2}.
+\]
+
+Igualando:
+\[
+ Z_A+i_1x=Z_B+i_2(x-L)
+\]
+
+\[
+\begin{aligned}
+Z_A+i_1x
+&=Z_A+\frac{(i_1+i_2)L}{2}+i_2x-i_2L \\
+i_1x-i_2x
+&=\frac{(i_1+i_2)L}{2}-i_2L \\
+(i_1-i_2)x
+&=\frac{(i_1+i_2-2i_2)L}{2} \\
+(i_1-i_2)x
+&=\frac{(i_1-i_2)L}{2} \\
+x&=\frac{L}{2}.
+\end{aligned}
+\]
+
+A cota no ponto de interseção é:
+\[
+ Z_I=Z_A+i_1\frac{L}{2}.
+\]
+
+Sabendo que a flecha vertical é
+\[
+ e=\frac{L}{8}(i_1-i_2),
+\]
+
+a cota da parábola no ponto $x=L/2$ é:
+\[
+ Z_{\mathrm{parab}}\left(\frac{L}{2}\right)=Z_A+i_1\frac{L}{2}-e.
+\]
+
+Assim, o ponto de interseção das tangentes ocorre em $x=L/2$, e a cota correspondente sobre a parábola é
+\[
+ Z=Z_A+i_1\frac{L}{2}-e.
+\]
+\end{corpo}
+
+\section*{Parábola não simétrica em relação ao comprimento horizontal}
+
+\begin{corpo}
+Nos desenvolvimentos anteriores, o PIV foi considerado no ponto médio da curva, isto é, com $x_I=L/2$. Em uma concordância vertical não simétrica, essa condição não é mais verdadeira. Nesse caso, definem-se dois comprimentos distintos:
+\[
+ l_1=\text{distância do PCV ao PIV}
+\]
+\[
+ l_2=\text{distância do PIV ao PTV}
+\]
+\[
+ L=l_1+l_2
+\]
+
+Assim, tomando a origem no PCV, a abscissa do PIV passa a ser:
+\[
+ x_I=l_1
+\]
+
+Portanto, nas equações da curva simétrica, não se deve substituir simplesmente $L$ por $l_1+l_2$ e manter $L/2$. O comprimento total continua sendo $L=l_1+l_2$, mas a posição do PIV deve ser tratada separadamente.
+\end{corpo}
+
+\subsubsection*{Cotas dos pontos extremos a partir do PIV}
+
+\begin{corpo}
+Se a cota do PIV é $Z_I$, a cota do PCV, indicado por $A$, é obtida pela tangente inicial:
+\[
+ Z_A=Z_I-i_1l_1
+\]
+
+A cota do PTV, indicado por $B$, é obtida pela tangente final:
+\[
+ Z_B=Z_I+i_2l_2
+\]
+
+Dessa forma, para a parábola assimétrica:
+\[
+ Z_A=Z_I-i_1l_1
+\]
+\[
+ Z_B=Z_I+i_2l_2
+\]
+\end{corpo}
+
+\subsubsection*{Demonstração da flecha na parábola assimétrica}
+
+\begin{corpo}
+Na curva simétrica, a flecha vertical é avaliada em $x=L/2$. Na curva não simétrica, a flecha deve ser avaliada na abscissa do PIV, isto é, em $x=l_1$.
+
+Seja $s$ a declividade da parábola no ponto da curva situado sob o PIV. Como a concordância é composta por dois trechos parabólicos, a declividade nesse ponto deve ser a mesma quando se chega pelo lado do PCV e quando se sai pelo lado do PTV. Essa declividade intermediária é:
+\[
+ s=\frac{i_1l_1+i_2l_2}{L}
+\]
+
+No trecho entre o PCV e o PIV, a variação de cota da parábola no ponto $x=l_1$ é:
+\[
+ Z_\Gamma=Z_A+i_1l_1+\frac{s-i_1}{2l_1}l_1^2
+\]
+
+ou seja,
+\[
+ Z_\Gamma=Z_A+i_1l_1+\frac{(s-i_1)l_1}{2}.
+\]
+
+Como $Z_A=Z_I-i_1l_1$, resulta:
+\[
+ Z_\Gamma=Z_I+\frac{(s-i_1)l_1}{2}.
+\]
+
+Substituindo $s$:
+\[
+ s-i_1=\frac{i_1l_1+i_2l_2}{L}-i_1
+\]
+\[
+ s-i_1=\frac{i_1l_1+i_2l_2-i_1(l_1+l_2)}{L}
+\]
+\[
+ s-i_1=\frac{(i_2-i_1)l_2}{L}=-\frac{(i_1-i_2)l_2}{L}
+\]
+
+Logo:
+\[
+ Z_\Gamma=Z_I-\frac{(i_1-i_2)l_1l_2}{2L}
+\]
+
+A flecha vertical $e$ é a diferença entre o PIV e o ponto correspondente da curva, $\Gamma$:
+\[
+ e=Z_I-Z_\Gamma=\frac{l_1l_2(i_1-i_2)}{2L}
+\]
+\end{corpo}
+
+\subsubsection*{Relação com a forma simétrica}
+
+\begin{corpo}
+A expressão da flecha na parábola assimétrica é:
+\[
+ e=\frac{l_1l_2(i_1-i_2)}{2L}
+\]
+
+Quando a curva é simétrica, tem-se:
+\[
+ l_1=l_2=\frac{L}{2}.
+\]
+
+Substituindo na expressão anterior:
+\[
+\begin{aligned}
+e
+&=\frac{\left(\frac{L}{2}\right)\left(\frac{L}{2}\right)(i_1-i_2)}{2L} \\
+&=\frac{L^2/4}{2L}(i_1-i_2) \\
+&=\frac{L(i_1-i_2)}{8}.
+\end{aligned}
+\]
+
+Portanto, a equação usual da flecha é um caso particular da equação mais geral:
+\[
+ e=\frac{L(i_1-i_2)}{8}\quad \text{quando}\quad l_1=l_2=\frac{L}{2}.
+\]
+\end{corpo}
+
+\subsubsection*{Interpretação do sinal de $e$}
+
+\begin{corpo}
+Mantendo as rampas em forma decimal:
+\begin{itemize}
+    \item se $i_1>i_2$, a curva é convexa e $e$ é positivo, indicando que a parábola fica abaixo do PIV;
+    \item se $i_1<i_2$, a curva é côncava e $e$ é negativo pela convenção algébrica;
+    \item quando se deseja apenas a distância geométrica, utiliza-se $|e|$.
+\end{itemize}
+\end{corpo}
+
+\subsubsection*{Equações da parábola composta por trechos}
+
+\begin{corpo}
+A parábola não simétrica deve ser escrita por trechos, pois os comprimentos entre PCV--PIV e PIV--PTV são distintos. Seja:
+\[
+ L=l_1+l_2 \quad \text{e} \quad s=\frac{i_1l_1+i_2l_2}{L}
+\]
+
+\paragraph*{Trecho do PCV ao ponto sob o PIV}
+
+Para $0\leq x\leq l_1$, com origem no PCV:
+\[
+ Z(x)=Z_A+i_1x+\frac{s-i_1}{2l_1}x^2
+\]
+
+Como:
+\[
+ s-i_1=-\frac{(i_1-i_2)l_2}{L}
+\]
+
+então:
+\[
+ Z(x)=Z_A+i_1x-\frac{(i_1-i_2)l_2}{2Ll_1}x^2;\quad 0\leq x\leq l_1
+\]
+
+\paragraph*{Trecho do ponto sob o PIV ao PTV}
+
+Para $l_1\leq x\leq L$, escrevendo a equação a partir do PTV:
+\[
+ Z(x)=Z_B+i_2(x-L)+\frac{i_2-s}{2l_2}(x-L)^2
+\]
+
+Como:
+\[
+ i_2-s=-\frac{(i_1-i_2)l_1}{L}
+\]
+
+então:
+\[
+ Z(x)=Z_B+i_2(x-L)-\frac{(i_1-i_2)l_1}{2Ll_2}(x-L)^2;\quad l_1\leq x\leq L
+\]
+
+Essas equações garantem a tangência às rampas nos extremos e a continuidade da cota e da declividade no ponto da curva situado sob o PIV.
+\end{corpo}
+
+\subsubsection*{Exemplo numérico}
+
+\begin{corpo}
+Considere uma curva vertical assimétrica com os seguintes dados:
+\begin{itemize}
+    \item $i_1=+3{,}0\%=0{,}030$;
+    \item $i_2=-1{,}0\%=-0{,}010$;
+    \item $l_1=80\,\text{m}$;
+    \item $l_2=120\,\text{m}$;
+    \item $Z_I=500{,}000\,\text{m}$.
+\end{itemize}
+
+O comprimento total da curva é:
+\[
+ L=l_1+l_2=80+120=200\,\text{m}
+\]
+
+A cota do PCV é:
+\[
+ Z_A=Z_I-i_1l_1=500{,}000-0{,}030\cdot 80=497{,}600\,\text{m}
+\]
+
+A cota do PTV é:
+\[
+ Z_B=Z_I+i_2l_2=500{,}000+(-0{,}010)\cdot 120=498{,}800\,\text{m}
+\]
+
+A declividade comum no ponto da curva situado sob o PIV é:
+\[
+ s=\frac{0{,}030\cdot 80+(-0{,}010)\cdot 120}{200}=0{,}006=0{,}6\%.
+\]
+
+A flecha vertical é:
+\[
+ e=\frac{80\cdot 120\,[0{,}030-(-0{,}010)]}{2\cdot 200}
+\]
+\[
+ e=\frac{9600\cdot 0{,}040}{400}=0{,}960\,\text{m}
+\]
+
+Logo, a cota da curva sob o PIV é:
+\[
+ Z_\Gamma=Z_I-e=500{,}000-0{,}960=499{,}040\,\text{m}
+\]
+\end{corpo}
+
+\subsubsection*{Equações do exemplo}
+
+\begin{corpo}
+Para o trecho entre o PCV e o ponto sob o PIV:
+\[
+ Z(x)=497{,}600+0{,}030x-\frac{(0{,}030-(-0{,}010))\cdot 120}{2\cdot 200\cdot 80}x^2
+\]
+\[
+ Z(x)=497{,}600+0{,}030x-0{,}000150x^2
+\]
+
+Para $x=80\,\text{m}$:
+\[
+\begin{aligned}
+Z(80)&=497{,}600+0{,}030\cdot 80-0{,}000150\cdot 80^2 \\
+&=497{,}600+2{,}400-0{,}960 \\
+&=499{,}040\,\text{m}.
+\end{aligned}
+\]
+
+Para o trecho entre o ponto sob o PIV e o PTV:
+\[
+ Z(x)=498{,}800-0{,}010(x-200)-\frac{(0{,}030-(-0{,}010))\cdot 80}{2\cdot 200\cdot 120}(x-200)^2
+\]
+\[
+ Z(x)=498{,}800-0{,}010(x-200)-0{,}000066667(x-200)^2
+\]
+
+Para $x=80\,\text{m}$:
+\[
+\begin{aligned}
+Z(80)&=498{,}800-0{,}010(80-200)-0{,}000066667(80-200)^2 \\
+&=498{,}800+1{,}200-0{,}960 \\
+&=499{,}040\,\text{m}.
+\end{aligned}
+\]
+
+As duas equações fornecem a mesma cota no ponto sob o PIV, confirmando a continuidade da concordância:
+\[
+ Z_\Gamma=499{,}040\,\text{m}
+\]
+
+Além disso, a declividade nesse ponto é a mesma nos dois trechos:
+\[
+ s=0{,}006=0{,}6\%.
+\]
+\end{corpo}
+
+\end{document}
