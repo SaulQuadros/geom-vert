@@ -30,7 +30,7 @@ class LinhaEstaca:
     cota_tangente: float  # cota da rampa tangente de referência (m)
     flecha: float         # cota_tangente − cota_greide (m)
     cota_greide: float    # cota do greide / curva (m)
-    ponto: str            # "PCV" | "PIV" | "PTV" | "Inteira" | "Intermediária"
+    ponto: str            # "PCV" | "M (sob PIV)" | "F (sob PIV)" | "PTV" | "Inteira" | "Intermediária"
 
 
 def _formatar_estaca(dist: float) -> str:
@@ -88,8 +88,9 @@ def gerar_estaqueamento(
         add(k * passo_interm)
 
     # pontos notáveis (sempre presentes, com rótulo)
+    label_piv = "F (sob PIV)" if hasattr(resultado, "l1") else "M (sob PIV)"
     add(dist_pcv, "PCV")
-    add(dist_piv, "PIV")
+    add(dist_piv, label_piv)
     add(dist_ptv, "PTV")
 
     linhas: list[LinhaEstaca] = []

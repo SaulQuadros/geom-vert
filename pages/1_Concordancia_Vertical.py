@@ -213,8 +213,9 @@ with st.expander("📍 Estaqueamento (cotas das estacas)"):
         ]
     )
     st.dataframe(df_est, use_container_width=True, hide_index=True)
-    st.caption("No PIV: a cota na tangente é o ápice; a cota do greide é a da curva "
-               "(diferem pela flecha).")
+    st.caption("No estacionamento do PIV: a cota na tangente é Z_I (ápice); "
+               "a cota do greide é a do ponto da curva sob o PIV — M (simétrica) "
+               "ou F (assimétrica) — diferindo pela flecha e.")
     csv = df_est.to_csv(index=False, sep=";", decimal=",").encode("utf-8-sig")
     st.download_button(
         "⬇️ Baixar estaqueamento (CSV)",
