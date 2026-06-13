@@ -52,6 +52,19 @@ def plotar_perfil(r: ResultadoCurvaVertical) -> Figure:
     off_i = 0.4 if convexa else -0.4
     ax.text(x_I, r.Z_PIV + off_i, "I (PIV)", ha="center", fontsize=11, fontweight="bold")
 
+    # Rótulo do ponto médio do greide M (sob o PIV, separado de I pela flecha e)
+    off_m = -0.7 if convexa else 0.7
+    ax.text(x_I, r.Z_I_parab + off_m, "M (sob PIV)",
+            ha="center", fontsize=11, color="blue", fontweight="bold")
+
+    # Seta dupla da flecha e (entre M e PIV), deslocada levemente à direita
+    if abs(r.e) > 1e-9:
+        x_fl = x_I + r.L * 0.04
+        ax.annotate("", xy=(x_fl, r.Z_PIV), xytext=(x_fl, r.Z_I_parab),
+                    arrowprops=dict(arrowstyle="<->", color="blue", lw=1.1))
+        ax.text(x_fl + r.L * 0.01, (r.Z_PIV + r.Z_I_parab) / 2,
+                "$e$", color="blue", va="center", ha="left", fontsize=10)
+
     # Rótulo do vértice (V), junto à curva e no lado oposto ao PIV para não colidir
     if not np.isnan(r.Z_V):
         off_v = -0.7 if convexa else 0.7
@@ -110,6 +123,19 @@ def plotar_perfil_assimetrica(r: ResultadoCurvaVerticalAssimetrica) -> Figure:
     # Rótulo do PIV (I), junto ao ápice
     off_i = 0.4 if convexa else -0.4
     ax.text(x_I, r.Z_PIV + off_i, "I (PIV)", ha="center", fontsize=11, fontweight="bold")
+
+    # Rótulo do ponto F (sob o PIV, separado de I pela flecha e)
+    off_f = -0.7 if convexa else 0.7
+    ax.text(x_I, r.Z_F + off_f, "F (sob PIV)",
+            ha="center", fontsize=11, color="blue", fontweight="bold")
+
+    # Seta dupla da flecha e (entre F e PIV), deslocada levemente à direita
+    if abs(r.e) > 1e-9:
+        x_fl = x_I + r.L * 0.04
+        ax.annotate("", xy=(x_fl, r.Z_PIV), xytext=(x_fl, r.Z_F),
+                    arrowprops=dict(arrowstyle="<->", color="blue", lw=1.1))
+        ax.text(x_fl + r.L * 0.01, (r.Z_PIV + r.Z_F) / 2,
+                "$e$", color="blue", va="center", ha="left", fontsize=10)
 
     # Rótulo do vértice (V), no lado oposto ao PIV para não colidir
     if not np.isnan(r.Z_V):

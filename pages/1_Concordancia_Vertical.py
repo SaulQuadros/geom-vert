@@ -100,7 +100,7 @@ with col_res:
                     "Cota de B (PTV): Z_B",
                     "Cota do PIV (ápice): Z_PIV",
                     "Cota da curva sob o PIV: Z_F",
-                    "Declividade no PIV: s",
+                    "Declividade em F (sob PIV): s",
                     "Abscissa do vértice: x_V",
                     "Cota do vértice: Z_V",
                 ],
