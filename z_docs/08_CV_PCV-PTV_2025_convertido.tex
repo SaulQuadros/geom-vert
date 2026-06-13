@@ -58,14 +58,14 @@
 
 \begin{document}
 
-\section*{Relacionando as cotas de A (PCV) e B (PTV) a partir do PIV}
+\section*{Relacionando as cotas de A (PCV) e B (PTV) a partir do ponto médio da curva ($Z_M$)}
 
 \begin{corpo}
-Seja uma parábola de concordância vertical de comprimento $L$, com tangentes de inclinação $i_1$ (em A) e $i_2$ (em B), sendo o PIV (I) o ponto médio da curva ($x_I = L/2$). Sabendo a cota $Z_I$ do PIV, podemos determinar as cotas dos pontos $A$ (PCV) e $B$ (PTV) (Figura):
+Seja uma parábola de concordância vertical de comprimento $L$, com tangentes de inclinação $i_1$ (em A) e $i_2$ (em B), estando o PIV (I) na abscissa média da curva ($x_I = L/2$). Sabendo a cota $Z_M$ do ponto médio da curva (cota do greide em $x = L/2$), podemos determinar as cotas dos pontos $A$ (PCV) e $B$ (PTV) (Figura):
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.92\linewidth]{figuras/figura_parabola_piv_pcv_ptv.png}
+\includegraphics[width=0.92\linewidth]{figuras/Fig_01.png}
 \end{figure}
 \end{corpo}
 
@@ -82,10 +82,10 @@ A cota absoluta ao longo da parábola:
  Z(x)=Z_A+y(x)
 \]
 
-Cota do PIV ($x_I=L/2$):
+Cota do ponto médio da curva ($x=L/2$):
 \[
 \begin{aligned}
-Z_I
+Z_M
 &=Z_A+y\left(\frac{L}{2}\right) \\
 &=Z_A+i_1\frac{L}{2}-\frac{(i_1-i_2)}{2L}\left(\frac{L}{2}\right)^2 \\
 &=Z_A+i_1\frac{L}{2}-\frac{(i_1-i_2)L}{8}.
@@ -94,7 +94,7 @@ Z_I
 
 \paragraph*{Isolando $Z_A$:}
 \[
- Z_A=Z_I-i_1\frac{L}{2}+\frac{(i_1-i_2)L}{8}
+ Z_A=Z_M-i_1\frac{L}{2}+\frac{(i_1-i_2)L}{8}
 \]
 
 Cota de $B$ (PTV, $x=L$):
@@ -113,19 +113,19 @@ Portanto,
 
 Ou, substituindo $Z_A$:
 \[
- Z_B=Z_I-i_1\frac{L}{2}+\frac{(i_1-i_2)L}{8}+\frac{(i_1+i_2)L}{2}
+ Z_B=Z_M-i_1\frac{L}{2}+\frac{(i_1-i_2)L}{8}+\frac{(i_1+i_2)L}{2}
 \]
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.92\linewidth]{figuras/figura_perfil_longitudinal_convexa.jpeg}
+\includegraphics[width=0.92\linewidth]{figuras/Fig_02_real.png}
 \end{figure}
 \end{corpo}
 
-\section*{Relação com a flecha vertical $e$ e da cota do PIV}
+\section*{Relação com a flecha vertical $e$, o ponto médio $Z_M$ e a cota do PIV $Z_I$}
 
 \begin{corpo}
-Vamos repetir a demonstração anterior. Para isso, considere novamente uma curva de concordância vertical do tipo parábola simples, de comprimento $L$, com rampas tangentes de inclinação $i_1$ (em A) e $i_2$ (em B), e $I$ (PIV) sendo o ponto médio da curva ($x_I=L/2$). A flecha vertical $e$ pode ser calculada por:
+Vamos repetir a demonstração anterior. Para isso, considere novamente uma curva de concordância vertical do tipo parábola simples, de comprimento $L$, com rampas tangentes de inclinação $i_1$ (em A) e $i_2$ (em B), estando o PIV (I) na abscissa média da curva ($x_I=L/2$). A flecha vertical $e$ pode ser calculada por:
 \[
  e=\frac{L}{8}(i_1-i_2)
 \]
@@ -141,10 +141,10 @@ A cota absoluta ao longo da parábola é:
 \]
 \end{corpo}
 
-\subsubsection*{Cota do ponto $I$ (PIV)}
+\subsubsection*{Cota do ponto médio da curva ($Z_M$)}
 
 \begin{corpo}
-Para $x_I=L/2$, temos:
+Para $x=L/2$, temos:
 \[
 \begin{aligned}
 y\left(\frac{L}{2}\right)
@@ -156,12 +156,12 @@ y\left(\frac{L}{2}\right)
 
 Logo,
 \[
- Z_I=Z_A+i_1\frac{L}{2}-e
+ Z_M=Z_A+i_1\frac{L}{2}-e
 \]
 
-Isolando $Z_A$ em função de $Z_I$ e $e$:
+Isolando $Z_A$ em função de $Z_M$ e $e$:
 \[
- Z_A=Z_I-i_1\frac{L}{2}+e
+ Z_A=Z_M-i_1\frac{L}{2}+e
 \]
 \end{corpo}
 
@@ -184,7 +184,7 @@ Portanto,
 
 Substituindo $Z_A$:
 \[
- Z_B=Z_I-i_1\frac{L}{2}+e+\frac{(i_1+i_2)L}{2}
+ Z_B=Z_M-i_1\frac{L}{2}+e+\frac{(i_1+i_2)L}{2}
 \]
 \end{corpo}
 
@@ -192,10 +192,10 @@ Substituindo $Z_A$:
 
 \begin{corpo}
 \[
- Z_A=Z_I-i_1\frac{L}{2}+e
+ Z_A=Z_M-i_1\frac{L}{2}+e
 \]
 \[
- Z_B=Z_I-i_1\frac{L}{2}+e+\frac{(i_1+i_2)L}{2}
+ Z_B=Z_M-i_1\frac{L}{2}+e+\frac{(i_1+i_2)L}{2}
 \]
 
 onde
@@ -206,6 +206,39 @@ onde
 As duas formas de calcular as cotas de A e B nos levam ao mesmo resultado, sendo apenas explicitado em termos de $e$ a segunda opção.
 \end{corpo}
 
+\subsubsection*{Relação entre $Z_M$ e a cota do PIV ($Z_I$)}
+
+\begin{corpo}
+O PIV (I) é a interseção das rampas tangentes, situada em $x=L/2$. Sua cota é obtida pela tangente em $A$:
+\[
+ Z_I=Z_A+i_1\frac{L}{2}
+\]
+
+Como $Z_M=Z_A+i_1\dfrac{L}{2}-e$, conclui-se que o PIV fica exatamente uma flecha acima do ponto médio da curva:
+\[
+ Z_I=Z_M+e \quad\Longleftrightarrow\quad Z_M=Z_I-e
+\]
+\end{corpo}
+
+\subsubsection*{Cotas de A (PCV) e B (PTV) em função de $Z_I$ (PIV)}
+
+\begin{corpo}
+Substituindo $Z_M=Z_I-e$ nas equações do resumo, a flecha $e$ se cancela:
+\[
+ Z_A=Z_M-i_1\frac{L}{2}+e=(Z_I-e)-i_1\frac{L}{2}+e=Z_I-i_1\frac{L}{2}
+\]
+\[
+ Z_B=Z_A+\frac{(i_1+i_2)L}{2}=Z_I-i_1\frac{L}{2}+\frac{(i_1+i_2)L}{2}=Z_I+i_2\frac{L}{2}
+\]
+
+Portanto, ancorando no PIV:
+\[
+ Z_A=Z_I-i_1\frac{L}{2} \qquad Z_B=Z_I+i_2\frac{L}{2}
+\]
+
+Esta é a forma adotada no App: o valor de entrada $Z_I$ é a cota do PIV (ápice / interseção das tangentes), e o greide no meio da curva passa em $Z_M=Z_I-e$.
+\end{corpo}
+
 \subsubsection*{Exemplo Numérico}
 
 \begin{corpo}
@@ -214,7 +247,7 @@ Considere:
     \item $i_1=+2{,}5\%=0{,}025$;
     \item $i_2=-1{,}0\%=-0{,}010$;
     \item $L=120\,\text{m}$;
-    \item $Z_I=201{,}20\,\text{m}$.
+    \item $Z_M=201{,}20\,\text{m}$ (cota do greide no meio da curva).
 \end{itemize}
 
 Cálculo de $Z_A$:
@@ -242,10 +275,30 @@ Z_B
 \end{aligned}
 \]
 
+Verificação pela ancoragem no PIV: a flecha é
+\[
+ e=\frac{L}{8}(i_1-i_2)=\frac{120}{8}\cdot 0{,}035=0{,}525\,\text{m}
+\]
+e a cota do PIV (ápice) é
+\[
+ Z_I=Z_M+e=201{,}20+0{,}525=201{,}725\,\text{m}.
+\]
+
+Com as equações em função de $Z_I$:
+\[
+ Z_A=Z_I-i_1\frac{L}{2}=201{,}725-0{,}025\cdot 60=200{,}225\,\text{m}
+\]
+\[
+ Z_B=Z_I+i_2\frac{L}{2}=201{,}725+(-0{,}010)\cdot 60=201{,}125\,\text{m}
+\]
+
+confirmando os valores obtidos pela ancoragem em $Z_M$.
+
 Resumo:
 \begin{itemize}
     \item $Z_A=200{,}225\,\text{m}$;
-    \item $Z_I=201{,}20\,\text{m}$;
+    \item $Z_M=201{,}20\,\text{m}$ (greide no meio da curva);
+    \item $Z_I=Z_M+e=201{,}725\,\text{m}$ (PIV / ápice);
     \item $Z_B=201{,}125\,\text{m}$.
 \end{itemize}
 \end{corpo}
@@ -253,9 +306,9 @@ Resumo:
 \section*{Simetria das Cotas de A (PCV) e B (PTV) para $|i_1|=|i_2|$}
 
 \begin{corpo}
-Suponha que as inclinações das rampas sejam simétricas em módulo, ou seja, $i_1=-i_2$, com $i_1>0$ e $i_2<0$. A equação geral para as cotas dos pontos extremos, obtida anteriormente, é:
+Suponha que as inclinações das rampas sejam simétricas em módulo, ou seja, $i_1=-i_2$, com $i_1>0$ e $i_2<0$. A equação geral para as cotas dos pontos extremos, obtida anteriormente (ancorada em $Z_M$), é:
 \[
- Z_A=Z_I-\frac{i_1L}{2}+\frac{(i_1-i_2)L}{8}
+ Z_A=Z_M-\frac{i_1L}{2}+\frac{(i_1-i_2)L}{8}
 \]
 \[
  Z_B=Z_A+\frac{(i_1+i_2)L}{2}
@@ -273,10 +326,10 @@ Assim,
 \[
 \begin{aligned}
 Z_A
-&=Z_I-\frac{i_1L}{2}+\frac{2i_1L}{8} \\
-&=Z_I-\frac{i_1L}{2}+\frac{i_1L}{4} \\
-&=Z_I-\frac{2i_1L}{4}+\frac{i_1L}{4} \\
-&=Z_I-\frac{i_1L}{4}.
+&=Z_M-\frac{i_1L}{2}+\frac{2i_1L}{8} \\
+&=Z_M-\frac{i_1L}{2}+\frac{i_1L}{4} \\
+&=Z_M-\frac{2i_1L}{4}+\frac{i_1L}{4} \\
+&=Z_M-\frac{i_1L}{4}.
 \end{aligned}
 \]
 
@@ -290,7 +343,12 @@ Z_A
 \begin{corpo}
 Quando $i_1=-i_2$, as cotas de A (PCV) e B (PTV) são sempre iguais:
 \[
- Z_B=Z_A=Z_I-\frac{i_1L}{4}
+ Z_B=Z_A=Z_M-\frac{i_1L}{4}
+\]
+
+Em função do PIV, como $e=\dfrac{L}{8}\cdot 2i_1=\dfrac{i_1L}{4}$ e $Z_I=Z_M+e$, o mesmo resultado se escreve:
+\[
+ Z_B=Z_A=Z_I-\frac{i_1L}{2}
 \]
 \end{corpo}
 
@@ -302,7 +360,7 @@ Sejam:
     \item $i_1=+2{,}5\%=0{,}025$;
     \item $i_2=-2{,}5\%=-0{,}025$;
     \item $L=100\,\text{m}$;
-    \item $Z_I=250{,}00\,\text{m}$.
+    \item $Z_M=250{,}00\,\text{m}$ (cota do greide no meio da curva).
 \end{itemize}
 
 \[
@@ -471,7 +529,7 @@ Em $B$ (PTV, $x=L$):
     \item Se $i_1>i_2$, a parábola é convexa e o vértice é um máximo.
     \item Se $i_1<i_2$, a parábola é côncava e o vértice é um mínimo.
     \item Se $x_0$ está fora do intervalo $[0,L]$, o máximo/mínimo ocorre em um dos extremos.
-    \item O PIV (I), na forma simétrica usual, ocorre em $x=L/2$, e sua cota é $Z_I=Z_A+y(L/2)$.
+    \item O PIV (I), na forma simétrica usual, ocorre em $x=L/2$; sua cota é $Z_I=Z_A+i_1L/2$ (sobre as tangentes), enquanto a curva passa em $Z_M=Z_A+y(L/2)=Z_I-e$.
 \end{itemize}
 
 Outra forma de analisar:
@@ -550,14 +608,14 @@ Sabendo que a flecha vertical é
  e=\frac{L}{8}(i_1-i_2),
 \]
 
-a cota da parábola no ponto $x=L/2$ é:
+a cota da parábola no ponto $x=L/2$ (ponto médio da curva, $Z_M$) é:
 \[
- Z_{\mathrm{parab}}\left(\frac{L}{2}\right)=Z_A+i_1\frac{L}{2}-e.
+ Z_M=Z_A+i_1\frac{L}{2}-e.
 \]
 
-Assim, o ponto de interseção das tangentes ocorre em $x=L/2$, e a cota correspondente sobre a parábola é
+Assim, o ponto de interseção das tangentes (PIV) ocorre em $x=L/2$, uma flecha acima da curva:
 \[
- Z=Z_A+i_1\frac{L}{2}-e.
+ Z_I=Z_M+e.
 \]
 \end{corpo}
 
@@ -581,6 +639,12 @@ Assim, tomando a origem no PCV, a abscissa do PIV passa a ser:
 \]
 
 Portanto, nas equações da curva simétrica, não se deve substituir simplesmente $L$ por $l_1+l_2$ e manter $L/2$. O comprimento total continua sendo $L=l_1+l_2$, mas a posição do PIV deve ser tratada separadamente.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{figuras/Fig_03.png}
+\caption*{Concordância vertical assimétrica: A (PCV), I (PIV) no ápice em $x=l_1$, ponto $F$ da curva sob o PIV e B (PTV). A flecha $e = Z_I - Z_F$ aparece duplicada por simetria construtiva da figura.}
+\end{figure}
 \end{corpo}
 
 \subsubsection*{Cotas dos pontos extremos a partir do PIV}
@@ -617,17 +681,17 @@ Seja $s$ a declividade da parábola no ponto da curva situado sob o PIV. Como a 
 
 No trecho entre o PCV e o PIV, a variação de cota da parábola no ponto $x=l_1$ é:
 \[
- Z_\Gamma=Z_A+i_1l_1+\frac{s-i_1}{2l_1}l_1^2
+ Z_F=Z_A+i_1l_1+\frac{s-i_1}{2l_1}l_1^2
 \]
 
 ou seja,
 \[
- Z_\Gamma=Z_A+i_1l_1+\frac{(s-i_1)l_1}{2}.
+ Z_F=Z_A+i_1l_1+\frac{(s-i_1)l_1}{2}.
 \]
 
 Como $Z_A=Z_I-i_1l_1$, resulta:
 \[
- Z_\Gamma=Z_I+\frac{(s-i_1)l_1}{2}.
+ Z_F=Z_I+\frac{(s-i_1)l_1}{2}.
 \]
 
 Substituindo $s$:
@@ -643,12 +707,12 @@ Substituindo $s$:
 
 Logo:
 \[
- Z_\Gamma=Z_I-\frac{(i_1-i_2)l_1l_2}{2L}
+ Z_F=Z_I-\frac{(i_1-i_2)l_1l_2}{2L}
 \]
 
-A flecha vertical $e$ é a diferença entre o PIV e o ponto correspondente da curva, $\Gamma$:
+A flecha vertical $e$ é a diferença entre o PIV e o ponto $F$ da curva situado sob o PIV:
 \[
- e=Z_I-Z_\Gamma=\frac{l_1l_2(i_1-i_2)}{2L}
+ e=Z_I-Z_F=\frac{l_1l_2(i_1-i_2)}{2L}
 \]
 \end{corpo}
 
@@ -779,8 +843,14 @@ A flecha vertical é:
 
 Logo, a cota da curva sob o PIV é:
 \[
- Z_\Gamma=Z_I-e=500{,}000-0{,}960=499{,}040\,\text{m}
+ Z_F=Z_I-e=500{,}000-0{,}960=499{,}040\,\text{m}
 \]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth]{figuras/Fig_04_novo.png}
+\caption*{Perfil longitudinal do exemplo: curva convexa assimétrica com $i_1=+3\%$, $i_2=-1\%$, $l_1=80\,\text{m}$, $l_2=120\,\text{m}$, $Z_I=500{,}000\,\text{m}$. O ponto azul em $x=l_1=80\,\text{m}$ é $F$ ($Z_F=499{,}040\,\text{m}$); a estrela é o vértice $V$ ($x_V=125\,\text{m}$, $Z_V=499{,}175\,\text{m}$).}
+\end{figure}
 \end{corpo}
 
 \subsubsection*{Equações do exemplo}
@@ -822,7 +892,7 @@ Z(80)&=498{,}800-0{,}010(80-200)-0{,}000066667(80-200)^2 \\
 
 As duas equações fornecem a mesma cota no ponto sob o PIV, confirmando a continuidade da concordância:
 \[
- Z_\Gamma=499{,}040\,\text{m}
+ Z_F=499{,}040\,\text{m}
 \]
 
 Além disso, a declividade nesse ponto é a mesma nos dois trechos:
