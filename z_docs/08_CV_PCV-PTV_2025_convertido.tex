@@ -1192,7 +1192,36 @@ Os coeficientes quadráticos de flecha local são:
  k_2 = \frac{(i_1-i_2)\,l_1}{2L\,l_2} = \frac{0{,}040 \times 80}{2 \times 200 \times 120} = 0{,}0000\overline{6}\,\text{m}^{-1}.
 \]
 
-Tabela de estaqueamento (passo 20\,m --- somente estacas inteiras e pontos notáveis):
+A sequência de cálculo para cada estaca é:
+\begin{enumerate}
+  \item Determinar a abscissa $x$ (distância ao PCV).
+  \item Identificar o trecho: trecho~1 se $0 \le x \le l_1$; trecho~2 se $l_1 < x \le L$.
+  \item Calcular a \textbf{cota na tangente}:
+        \[
+          Z_{\mathrm{tang}}(x) = \begin{cases}
+            Z_A + i_1\,x, & 0 \le x \le l_1,\\
+            Z_B + i_2\,(x - L), & l_1 < x \le L.
+          \end{cases}
+        \]
+  \item Calcular a \textbf{flecha local}: $f(x) = k_1\,x^2$ (trecho~1) ou $f(x) = k_2\,(x-L)^2$ (trecho~2).
+  \item Obter a \textbf{cota do greide}: $Z(x) = Z_{\mathrm{tang}}(x) - f(x)$.
+\end{enumerate}
+
+\textbf{Exemplo --- Estaca 7+00,00} ($x = 20\,\text{m}$, trecho~1):
+\begin{align*}
+  Z_{\mathrm{tang}}(20) &= 497{,}600 + 0{,}030 \times 20 = 498{,}200\,\text{m},\\
+  f(20)                 &= 0{,}000150 \times 20^2 = 0{,}060\,\text{m},\\
+  Z(20)                 &= 498{,}200 - 0{,}060 = 498{,}140\,\text{m}.
+\end{align*}
+
+\textbf{Exemplo --- Estaca 11+00,00} ($x = 100\,\text{m}$, trecho~2, pois $x > l_1 = 80\,\text{m}$):
+\begin{align*}
+  Z_{\mathrm{tang}}(100) &= 498{,}800 + (-0{,}010)\times(100 - 200) = 498{,}800 + 1{,}000 = 499{,}800\,\text{m},\\
+  f(100)                 &= 0{,}0000\overline{6} \times (100 - 200)^2 = 0{,}667\,\text{m},\\
+  Z(100)                 &= 499{,}800 - 0{,}667 = 499{,}133\,\text{m}.
+\end{align*}
+
+Aplicando o mesmo procedimento às demais estacas obtém-se a tabela a seguir (passo 20\,m --- somente estacas inteiras e pontos notáveis):
 
 \begin{center}
 \small
