@@ -1271,4 +1271,203 @@ Aplicando o mesmo procedimento às demais estacas obtém-se a tabela a seguir (p
 \textit{No App, o usuário pode escolher passo de 10\,m (intermediárias) ou 5\,m, e exportar a tabela completa em formato CSV compatível com Excel.}
 \end{corpo}
 
+% ============================================================
+\newpage
+\section*{Exercício 1 — Concordância vertical parabólica simétrica}
+% ============================================================
+
+\begin{corpo}
+\textbf{Enunciado.} Uma rodovia apresenta uma concordância vertical parabólica \emph{simétrica} de comprimento $L = 200\,\text{m}$, com rampas $i_1 = {+}3{,}0\%$ (entrada) e $i_2 = {-}1{,}0\%$ (saída). A cota do PIV (ápice) é $Z_I = 160{,}000\,\text{m}$, e o PIV está associado à estaca \textbf{10+00,00} do projeto geométrico horizontal. Determine:
+\begin{enumerate}
+  \item as cotas de A (PCV), B (PTV) e do ponto médio M da curva;
+  \item a posição e a cota do vértice da parábola;
+  \item a tabela de estaqueamento (passo 20\,m; estacas inteiras e pontos notáveis).
+\end{enumerate}
+
+\subsubsection*{Parte 1 — Cotas de A (PCV), B (PTV) e do ponto médio M}
+
+Dados: $i_1 = 0{,}030$; $i_2 = -0{,}010$; $L = 200\,\text{m}$; $Z_I = 160{,}000\,\text{m}$.
+
+\textbf{Diferença de declividades:}
+\[
+  g = i_1 - i_2 = 0{,}030 - (-0{,}010) = 0{,}040
+\]
+
+\textbf{Flecha máxima:}
+\[
+  e = \frac{L\,g}{8} = \frac{200 \times 0{,}040}{8} = 1{,}000\,\text{m}
+\]
+
+\textbf{Cotas de A e B ancorando no PIV:}
+\begin{align*}
+  Z_A &= Z_I - i_1\,\frac{L}{2} = 160{,}000 - 0{,}030 \times 100 = 157{,}000\,\text{m}\\[4pt]
+  Z_B &= Z_I + i_2\,\frac{L}{2} = 160{,}000 + (-0{,}010) \times 100 = 159{,}000\,\text{m}
+\end{align*}
+
+\textbf{Cota do ponto médio M (greide em $x = L/2$):}
+\[
+  Z_M = Z_I - e = 160{,}000 - 1{,}000 = 159{,}000\,\text{m}
+\]
+
+\textit{Observação:} neste exemplo, $Z_M = Z_B = 159{,}000\,\text{m}$. Essa coincidência ocorre porque $|i_2|\,L/2 = e$ para esses valores específicos; em geral, $Z_M \neq Z_B$.
+
+\subsubsection*{Parte 2 — Vértice da parábola}
+
+\textbf{Abscissa do vértice:}
+\[
+  x_V = \frac{i_1\,L}{g} = \frac{0{,}030 \times 200}{0{,}040} = 150{,}000\,\text{m}
+\]
+
+Como $0 \le 150 \le 200$, o vértice está dentro da curva. No estaqueamento: distância absoluta $= 100 + 150 = 250\,\text{m}$ $\Rightarrow$ estaca \textbf{12+10,00}.
+
+\textbf{Cota do vértice:}
+\[
+  Z_V = Z_A + \frac{i_1^2\,L}{2\,g} = 157{,}000 + \frac{(0{,}030)^2 \times 200}{2 \times 0{,}040} = 157{,}000 + 2{,}250 = 159{,}250\,\text{m}
+\]
+
+Verificação: $Z(150) = 157{,}000 + 0{,}030 \times 150 - \dfrac{0{,}040}{400} \times 150^2 = 157{,}000 + 4{,}500 - 2{,}250 = 159{,}250\,\text{m}$ \checkmark
+
+\subsubsection*{Parte 3 — Estaqueamento}
+
+Distâncias de referência ($d_{\mathrm{PIV}} = 10 \times 20 = 200\,\text{m}$):
+\begin{align*}
+  d_{\mathrm{PCV}} &= 200 - 100 = 100\,\text{m} \quad (\text{estaca }5{+}00{,}00),\\
+  d_{\mathrm{PTV}} &= 100 + 200 = 300\,\text{m} \quad (\text{estaca }15{+}00{,}00).
+\end{align*}
+
+Sequência em cada estaca: $Z_{\mathrm{tang}}(x)$; $f(x) = \dfrac{g}{2L}\,x^2$; $Z(x) = Z_{\mathrm{tang}}(x) - f(x)$.
+
+\begin{center}
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+\textbf{Estaca} & \boldmath$x$\textbf{ (m)} & \textbf{Cota tang. (m)} & \textbf{Flecha (m)} & \textbf{Cota greide (m)} & \textbf{Ponto} \\
+\midrule
+ 5 + 00,00 &   0 & 157,000 & 0,000 & 157,000 & PCV \\
+ 6 + 00,00 &  20 & 157,600 & 0,040 & 157,560 & Inteira \\
+ 7 + 00,00 &  40 & 158,200 & 0,160 & 158,040 & Inteira \\
+ 8 + 00,00 &  60 & 158,800 & 0,360 & 158,440 & Inteira \\
+ 9 + 00,00 &  80 & 159,400 & 0,640 & 158,760 & Inteira \\
+10 + 00,00 & 100 & 160,000 & 1,000 & 159,000 & M (sob PIV) \\
+11 + 00,00 & 120 & 159,800 & 0,640 & 159,160 & Inteira \\
+12 + 00,00 & 140 & 159,600 & 0,360 & 159,240 & Inteira \\
+12 + 10,00 & 150 & 159,500 & 0,250 & 159,250 & Vértice \\
+13 + 00,00 & 160 & 159,400 & 0,160 & 159,240 & Inteira \\
+14 + 00,00 & 180 & 159,200 & 0,040 & 159,160 & Inteira \\
+15 + 00,00 & 200 & 159,000 & 0,000 & 159,000 & PTV \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Verificações:}
+\begin{itemize}
+  \item Flecha nula em A ($x=0$) e em B ($x=200\,\text{m}$) \checkmark.
+  \item Flecha máxima em M ($x=100\,\text{m}$): $f = 1{,}000\,\text{m} = e$ \checkmark.
+  \item Simetria das flechas em torno de $x=100\,\text{m}$: $f(20)=f(180)=0{,}040\,\text{m}$; $f(40)=f(160)=0{,}160\,\text{m}$ \checkmark.
+  \item Cota tangente no PIV: $Z_{\mathrm{tang}}(100) = 157{,}000 + 0{,}030\times 100 = 160{,}000\,\text{m} = Z_I$ \checkmark.
+\end{itemize}
+\end{corpo}
+
+% ============================================================
+\newpage
+\section*{Exercício 2 — Concordância vertical parabólica assimétrica}
+% ============================================================
+
+\begin{corpo}
+\textbf{Enunciado.} Com as mesmas rampas e cota do PIV do Exercício~1 ($i_1 = {+}3{,}0\%$, $i_2 = {-}1{,}0\%$, $Z_I = 160{,}000\,\text{m}$, PIV na estaca \textbf{10+00,00}), projete uma concordância vertical parabólica \emph{assimétrica} com $l_1 = 80\,\text{m}$ e $l_2 = 120\,\text{m}$ ($l_1 < l_2$). Determine:
+\begin{enumerate}
+  \item as cotas de A (PCV), B (PTV) e do ponto F (sob o PIV);
+  \item a posição e a cota do vértice da parábola;
+  \item a tabela de estaqueamento (passo 20\,m; estacas inteiras e pontos notáveis).
+\end{enumerate}
+
+\subsubsection*{Parte 1 — Cotas de A (PCV), B (PTV) e do ponto F}
+
+Dados: $l_1 = 80\,\text{m}$; $l_2 = 120\,\text{m}$; $L = l_1 + l_2 = 200\,\text{m}$; $g = 0{,}040$.
+
+\textbf{Flecha máxima (assimétrica):}
+\[
+  e = \frac{l_1\,l_2\,g}{2L} = \frac{80 \times 120 \times 0{,}040}{2 \times 200} = \frac{384}{400} = 0{,}960\,\text{m}
+\]
+
+A distribuição assimétrica ($l_1 \neq l_2$) produz flecha menor do que a simétrica de mesmo comprimento total: $e_{\text{assim}} = 0{,}960\,\text{m} < e_{\text{sim}} = 1{,}000\,\text{m}$.
+
+\textbf{Cotas:}
+\begin{align*}
+  Z_A &= Z_I - i_1\,l_1 = 160{,}000 - 0{,}030 \times 80 = 157{,}600\,\text{m}\\[4pt]
+  Z_B &= Z_I + i_2\,l_2 = 160{,}000 + (-0{,}010) \times 120 = 158{,}800\,\text{m}\\[4pt]
+  Z_F &= Z_I - e = 160{,}000 - 0{,}960 = 159{,}040\,\text{m}
+\end{align*}
+
+\textbf{Declividade da curva em F (sob o PIV, $x = l_1$):}
+\[
+  s = \frac{i_1\,l_1 + i_2\,l_2}{L} = \frac{0{,}030 \times 80 + (-0{,}010) \times 120}{200} = \frac{1{,}200}{200} = 0{,}006 = 0{,}6\%
+\]
+
+\subsubsection*{Parte 2 — Vértice da parábola}
+
+\textbf{Coeficientes de curvatura:}
+\[
+  k_1 = \frac{g\,l_2}{2L\,l_1} = \frac{0{,}040 \times 120}{2 \times 200 \times 80} = 0{,}000150\,\text{m}^{-1}, \qquad
+  k_2 = \frac{g\,l_1}{2L\,l_2} = \frac{0{,}040 \times 80}{2 \times 200 \times 120} = 0{,}0000\overline{6}\,\text{m}^{-1}
+\]
+
+\textbf{Candidato no trecho 1} ($0 \le x \le l_1$):
+\[
+  x_{V1} = \frac{i_1\,L\,l_1}{g\,l_2} = \frac{0{,}030 \times 200 \times 80}{0{,}040 \times 120} = 100\,\text{m}
+\]
+Como $x_{V1} = 100\,\text{m} > l_1 = 80\,\text{m}$, este candidato é \textbf{inválido}.
+
+\textbf{Candidato no trecho 2} ($l_1 \le x \le L$):
+\[
+  x_{V2} = L + \frac{i_2\,L\,l_2}{g\,l_1} = 200 + \frac{(-0{,}010) \times 200 \times 120}{0{,}040 \times 80} = 200 - 75 = 125\,\text{m}
+\]
+Como $80 \le 125 \le 200$, este candidato é \textbf{válido}. Distância absoluta: $120 + 125 = 245\,\text{m}$ $\Rightarrow$ estaca \textbf{12+05,00}.
+
+\textbf{Cota do vértice (trecho 2):}
+\begin{align*}
+  Z_V &= Z_B + i_2\,(x_V - L) - k_2\,(x_V - L)^2\\
+      &= 158{,}800 + (-0{,}010)\times(125 - 200) - 0{,}0000\overline{6}\times(125-200)^2\\
+      &= 158{,}800 + 0{,}750 - 0{,}375 = 159{,}175\,\text{m}
+\end{align*}
+
+\subsubsection*{Parte 3 — Estaqueamento}
+
+Distâncias de referência ($d_{\mathrm{PIV}} = 200\,\text{m}$):
+\begin{align*}
+  d_{\mathrm{PCV}} &= 200 - 80 = 120\,\text{m} \quad (\text{estaca }6{+}00{,}00),\\
+  d_{\mathrm{PTV}} &= 120 + 200 = 320\,\text{m} \quad (\text{estaca }16{+}00{,}00).
+\end{align*}
+
+\begin{center}
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+\textbf{Estaca} & \boldmath$x$\textbf{ (m)} & \textbf{Cota tang. (m)} & \textbf{Flecha (m)} & \textbf{Cota greide (m)} & \textbf{Ponto} \\
+\midrule
+ 6 + 00,00 &   0 & 157,600 & 0,000 & 157,600 & PCV \\
+ 7 + 00,00 &  20 & 158,200 & 0,060 & 158,140 & Inteira \\
+ 8 + 00,00 &  40 & 158,800 & 0,240 & 158,560 & Inteira \\
+ 9 + 00,00 &  60 & 159,400 & 0,540 & 158,860 & Inteira \\
+10 + 00,00 &  80 & 160,000 & 0,960 & 159,040 & F (sob PIV) \\
+11 + 00,00 & 100 & 159,800 & 0,667 & 159,133 & Inteira \\
+12 + 00,00 & 120 & 159,600 & 0,427 & 159,173 & Inteira \\
+12 + 05,00 & 125 & 159,550 & 0,375 & 159,175 & Vértice \\
+13 + 00,00 & 140 & 159,400 & 0,240 & 159,160 & Inteira \\
+14 + 00,00 & 160 & 159,200 & 0,107 & 159,093 & Inteira \\
+15 + 00,00 & 180 & 159,000 & 0,027 & 158,973 & Inteira \\
+16 + 00,00 & 200 & 158,800 & 0,000 & 158,800 & PTV \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Verificações:}
+\begin{itemize}
+  \item Flecha nula em A ($x=0$) e em B ($x=200\,\text{m}$) \checkmark.
+  \item Flecha máxima em F ($x=80\,\text{m}$): $f = 0{,}960\,\text{m} = e$ \checkmark.
+  \item Trecho~1: $f(20) = k_1 \times 20^2 = 0{,}000150 \times 400 = 0{,}060\,\text{m}$ \checkmark.
+  \item Cota tangente no PIV: $Z_{\mathrm{tang}}(80) = 157{,}600 + 0{,}030 \times 80 = 160{,}000\,\text{m} = Z_I$ \checkmark.
+\end{itemize}
+\end{corpo}
+
 \end{document}
