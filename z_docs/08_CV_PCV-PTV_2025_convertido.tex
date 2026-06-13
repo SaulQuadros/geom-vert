@@ -901,6 +901,104 @@ Além disso, a declividade nesse ponto é a mesma nos dois trechos:
 \]
 \end{corpo}
 
+% ============================================================
+\section*{Vértice da parábola assimétrica}
+% ============================================================
+
+\begin{corpo}
+Na curva assimétrica, a parábola é composta por dois trechos com coeficientes quadráticos distintos:
+\[
+ k_1 = \frac{(i_1-i_2)\,l_2}{2L\,l_1}, \qquad k_2 = \frac{(i_1-i_2)\,l_1}{2L\,l_2}.
+\]
+
+O vértice (ponto de inclinação nula) é calculado separadamente em cada trecho, zerando a derivada da equação correspondente.
+\end{corpo}
+
+\subsubsection*{Candidato no trecho 1 (PCV $\to$ ponto sob o PIV)}
+
+\begin{corpo}
+Para $0 \le x \le l_1$:
+\[
+ Z(x) = Z_A + i_1\,x - k_1\,x^2 \quad\Rightarrow\quad \frac{dZ}{dx} = i_1 - 2k_1\,x = 0
+\]
+\[
+ x_{V_1} = \frac{i_1}{2k_1} = \frac{i_1\,L\,l_1}{(i_1-i_2)\,l_2}
+\]
+
+Este candidato é válido se $0 \le x_{V_1} \le l_1$. Nesse caso:
+\[
+ Z_{V_1} = Z_A + i_1\,x_{V_1} - k_1\,x_{V_1}^2
+\]
+\end{corpo}
+
+\subsubsection*{Candidato no trecho 2 (ponto sob o PIV $\to$ PTV)}
+
+\begin{corpo}
+Para $l_1 \le x \le L$, escrevendo a partir do PTV ($u = x - L \le 0$):
+\[
+ Z(x) = Z_B + i_2\,u - k_2\,u^2 \quad\Rightarrow\quad \frac{dZ}{dx} = i_2 - 2k_2\,u = 0
+\]
+\[
+ u_{V_2} = \frac{i_2}{2k_2} = \frac{i_2\,L\,l_2}{(i_1-i_2)\,l_1} \quad\Rightarrow\quad x_{V_2} = L + \frac{i_2\,L\,l_2}{(i_1-i_2)\,l_1}
+\]
+
+Este candidato é válido se $l_1 \le x_{V_2} \le L$. Nesse caso:
+\[
+ Z_{V_2} = Z_B + i_2\,(x_{V_2}-L) - k_2\,(x_{V_2}-L)^2
+\]
+\end{corpo}
+
+\subsubsection*{Regra de seleção e casos especiais}
+
+\begin{corpo}
+Para uma dada curva, \textbf{no máximo um} dos candidatos estará dentro do seu trecho. O vértice da curva é o candidato válido:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Se $0 \le x_{V_1} \le l_1$: o vértice está no trecho~1, em $(x_{V_1},\, Z_{V_1})$.
+  \item Senão, se $l_1 \le x_{V_2} \le L$: o vértice está no trecho~2, em $(x_{V_2},\, Z_{V_2})$.
+  \item Se nenhum candidato pertence ao seu trecho: a curva não tem vértice no intervalo $[0, L]$. Ocorre quando $i_1$ e $i_2$ têm o \emph{mesmo sinal} (greide sempre crescente ou sempre decrescente ao longo da curva).
+\end{enumerate}
+
+\textbf{Relação com o caso simétrico:} quando $l_1 = l_2 = L/2$, tem-se $k_1 = k_2 = (i_1-i_2)/(2L)$, e as fórmulas reduzem-se à expressão da curva simétrica: $x_V = i_1 L/(i_1-i_2)$.
+\end{corpo}
+
+\subsubsection*{Exemplo numérico}
+
+\begin{corpo}
+Retomando os dados da seção anterior ($i_1=0{,}030$, $i_2=-0{,}010$, $l_1=80\,\text{m}$, $l_2=120\,\text{m}$, $L=200\,\text{m}$, $g=0{,}040$):
+\[
+ k_1 = \frac{0{,}040 \times 120}{2 \times 200 \times 80} = 0{,}000150\,\text{m}^{-1}, \qquad
+ k_2 = \frac{0{,}040 \times 80}{2 \times 200 \times 120} = 0{,}0000\overline{6}\,\text{m}^{-1}.
+\]
+
+\textbf{Candidato no trecho~1:}
+\[
+ x_{V_1} = \frac{0{,}030}{2 \times 0{,}000150} = \frac{0{,}030}{0{,}000300} = 100\,\text{m}.
+\]
+Como $x_{V_1} = 100\,\text{m} > l_1 = 80\,\text{m}$, este candidato está \emph{fora} do trecho~1. Descartado.
+
+\textbf{Candidato no trecho~2:}
+\[
+ x_{V_2} = 200 + \frac{-0{,}010 \times 200 \times 120}{0{,}040 \times 80}
+          = 200 - \frac{240}{3{,}2}
+          = 200 - 75
+          = 125\,\text{m}.
+\]
+Como $l_1 = 80\,\text{m} \le 125\,\text{m} \le L = 200\,\text{m}$, o vértice está no trecho~2. \checkmark
+
+\textbf{Cota do vértice:}
+\[
+\begin{aligned}
+Z_V &= Z_B + i_2\,(x_{V_2}-L) - k_2\,(x_{V_2}-L)^2 \\
+    &= 498{,}800 + (-0{,}010)\,(-75) - 0{,}0000\overline{6}\,(-75)^2 \\
+    &= 498{,}800 + 0{,}750 - 0{,}0000\overline{6} \times 5625 \\
+    &= 498{,}800 + 0{,}750 - 0{,}375 \\
+    &= 499{,}175\,\text{m}.
+\end{aligned}
+\]
+
+O vértice da curva é $V = (125\,\text{m},\ 499{,}175\,\text{m})$ --- confirmado pela estrela azul no perfil longitudinal da seção anterior (Fig.~4).
+\end{corpo}
 
 % ============================================================
 \section*{Estaqueamento da concordância vertical}
