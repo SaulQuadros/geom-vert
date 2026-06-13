@@ -57,12 +57,11 @@ def plotar_perfil(r: ResultadoCurvaVertical) -> Figure:
     ax.text(x_I, r.Z_I_parab + off_m, "M (sob PIV)",
             ha="center", fontsize=11, color="blue", fontweight="bold")
 
-    # Seta dupla da flecha e (entre M e PIV), deslocada levemente à direita
+    # Seta dupla da flecha e exatamente entre M e PIV (x = x_I)
     if abs(r.e) > 1e-9:
-        x_fl = x_I + r.L * 0.04
-        ax.annotate("", xy=(x_fl, r.Z_PIV), xytext=(x_fl, r.Z_I_parab),
+        ax.annotate("", xy=(x_I, r.Z_PIV), xytext=(x_I, r.Z_I_parab),
                     arrowprops=dict(arrowstyle="<->", color="blue", lw=1.1))
-        ax.text(x_fl + r.L * 0.01, (r.Z_PIV + r.Z_I_parab) / 2,
+        ax.text(x_I + r.L * 0.02, (r.Z_PIV + r.Z_I_parab) / 2,
                 "$e$", color="blue", va="center", ha="left", fontsize=10)
 
     # Rótulo do vértice (V), junto à curva e no lado oposto ao PIV para não colidir
@@ -129,12 +128,11 @@ def plotar_perfil_assimetrica(r: ResultadoCurvaVerticalAssimetrica) -> Figure:
     ax.text(x_I, r.Z_F + off_f, "F (sob PIV)",
             ha="center", fontsize=11, color="blue", fontweight="bold")
 
-    # Seta dupla da flecha e (entre F e PIV), deslocada levemente à direita
+    # Seta dupla da flecha e exatamente entre F e PIV (x = x_I = l1)
     if abs(r.e) > 1e-9:
-        x_fl = x_I + r.L * 0.04
-        ax.annotate("", xy=(x_fl, r.Z_PIV), xytext=(x_fl, r.Z_F),
+        ax.annotate("", xy=(x_I, r.Z_PIV), xytext=(x_I, r.Z_F),
                     arrowprops=dict(arrowstyle="<->", color="blue", lw=1.1))
-        ax.text(x_fl + r.L * 0.01, (r.Z_PIV + r.Z_F) / 2,
+        ax.text(x_I + r.L * 0.02, (r.Z_PIV + r.Z_F) / 2,
                 "$e$", color="blue", va="center", ha="left", fontsize=10)
 
     # Rótulo do vértice (V), no lado oposto ao PIV para não colidir
