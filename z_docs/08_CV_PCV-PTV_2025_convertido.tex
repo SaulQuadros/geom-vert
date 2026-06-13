@@ -901,4 +901,181 @@ Além disso, a declividade nesse ponto é a mesma nos dois trechos:
 \]
 \end{corpo}
 
+
+% ============================================================
+\section*{Estaqueamento da concordância vertical}
+% ============================================================
+
+\begin{corpo}
+Em projetos de vias, o \textbf{estaqueamento} é o processo de determinar as cotas do greide em pontos regularmente espaçados ao longo do eixo, denominados estacas. A tabela resultante — apresentada no App logo abaixo do gráfico — permite ao projetista quantificar os volumes de corte e aterro e verificar a concordância geometrica do perfil.
+\end{corpo}
+
+\subsubsection*{Definição de estaca e notação}
+
+\begin{corpo}
+Pela convenção brasileira (DNIT), uma \textbf{estaca} corresponde a um comprimento de $20\,\text{m}$. A posição de qualquer ponto ao longo do eixo é expressa na notação
+\[
+ n + f{,}ff
+\]
+onde $n$ é o número inteiro de estacas completas e $f$ é a fração em metros ($0 \le f < 20$). A distância absoluta correspondente é:
+\[
+ d = 20\,n + f
+\]
+
+Inversamente, dada a distância $d$ (em metros):
+\[
+ n = \left\lfloor \frac{d}{20} \right\rfloor, \qquad f = d - 20\,n
+\]
+
+\textbf{Exemplo:} estaca $39 + 10{,}00$ corresponde a $d = 20 \times 39 + 10 = 790\,\text{m}$.
+\end{corpo}
+
+\subsubsection*{Determinação das distâncias a partir do ponto de referência}
+
+\begin{corpo}
+O usuário informa a estaca ($n$, $f$) de \emph{um} ponto de referência --- PCV, PIV ou PTV --- e o sistema deduz as distâncias absolutas dos demais pontos notáveis a partir da geometria da curva.
+
+Sendo $d_{\mathrm{ref}} = 20\,n + f$ a distância absoluta do ponto de referência, e $x_{\mathrm{PIV}}$ a abscissa do PIV a partir do PCV (igual a $L/2$ na curva simétrica e a $l_1$ na assimétrica):
+
+\[
+\begin{array}{ll}
+\text{Referência = PCV:} & d_{\mathrm{PCV}} = d_{\mathrm{ref}}, \\[4pt]
+\text{Referência = PIV:} & d_{\mathrm{PCV}} = d_{\mathrm{ref}} - x_{\mathrm{PIV}}, \\[4pt]
+\text{Referência = PTV:} & d_{\mathrm{PCV}} = d_{\mathrm{ref}} - L.
+\end{array}
+\]
+
+Em todos os casos:
+\[
+ d_{\mathrm{PIV}} = d_{\mathrm{PCV}} + x_{\mathrm{PIV}}, \qquad d_{\mathrm{PTV}} = d_{\mathrm{PCV}} + L.
+\]
+\end{corpo}
+
+\subsubsection*{Composição da grade de estacas}
+
+\begin{corpo}
+A relação de pontos estaqueados é formada pela \textbf{união} de dois conjuntos:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item \textbf{Grade regular} — todos os múltiplos do passo $p$ (tipicamente $p = 10\,\text{m}$ ou $p = 20\,\text{m}$) contidos no intervalo $[d_{\mathrm{PCV}},\, d_{\mathrm{PTV}}]$:
+  \[
+   d_k = k\,p, \quad k = \left\lceil \frac{d_{\mathrm{PCV}}}{p} \right\rceil,\;\ldots,\; \left\lfloor \frac{d_{\mathrm{PTV}}}{p} \right\rfloor.
+  \]
+  Os múltiplos de $20\,\text{m}$ são chamados de \emph{estacas inteiras}; os de $10\,\text{m}$ que não são múltiplos de $20\,\text{m}$ são chamados de \emph{intermediárias}.
+
+  \item \textbf{Pontos notáveis} --- PCV, PIV e PTV são sempre incluídos, mesmo que não coincidam com a grade regular (ocorre quando $d_{\mathrm{PCV}}$ não é múltiplo de $p$).
+\end{enumerate}
+
+O conjunto resultante é ordenado por distância crescente e cada ponto recebe o rótulo correspondente: \textit{PCV}, \textit{PIV}, \textit{PTV}, \textit{Inteira} ou \textit{Intermediária}.
+\end{corpo}
+
+\subsubsection*{Colunas da tabela de estaqueamento}
+
+\begin{corpo}
+Para cada ponto $d$ da grade, define-se a \textbf{abscissa local} $x = d - d_{\mathrm{PCV}}$, com $0 \le x \le L$. As três colunas de cota são:
+
+\paragraph*{Cota tangente}
+Cota da \emph{rampa tangente de referência} na abscissa $x$. Usa-se a tangente de entrada ($i_1$) antes do PIV e a tangente de saída ($i_2$) após o PIV:
+\[
+ Z_{\mathrm{tang}}(x) =
+ \begin{cases}
+   Z_A + i_1\,x, & 0 \le x \le x_{\mathrm{PIV}}, \\[3pt]
+   Z_B + i_2\,(x - L), & x_{\mathrm{PIV}} < x \le L.
+ \end{cases}
+\]
+Nota: $Z_{\mathrm{tang}}(x_{\mathrm{PIV}}) = Z_I$ em ambos os lados --- a tangente é contínua no PIV.
+
+\paragraph*{Cota greide}
+Cota da \emph{parábola de concordância} na abscissa $x$, calculada pelas equações da curva (simétrica ou assimétrica):
+
+\textit{Curva simétrica} ($x_{\mathrm{PIV}} = L/2$):
+\[
+ Z(x) = Z_A + i_1\,x - \frac{i_1 - i_2}{2L}\,x^2.
+\]
+
+\textit{Curva assimétrica} (por trechos):
+\[
+ Z(x) =
+ \begin{cases}
+   Z_A + i_1\,x - \dfrac{(i_1-i_2)\,l_2}{2L\,l_1}\,x^2, & 0 \le x \le l_1, \\[8pt]
+   Z_B + i_2\,(x-L) - \dfrac{(i_1-i_2)\,l_1}{2L\,l_2}\,(x-L)^2, & l_1 \le x \le L.
+ \end{cases}
+\]
+
+\paragraph*{Flecha local}
+Diferença entre a cota tangente e a cota greide:
+\[
+ f(x) = Z_{\mathrm{tang}}(x) - Z(x).
+\]
+
+\textbf{Atenção:} a flecha local $f(x)$ não é a flecha máxima $e$. Ela \emph{varia quadraticamente} com $x$: é nula nos extremos A e B e atinge o valor $e$ exatamente no PIV. Para a curva assimétrica:
+\[
+ f(x) =
+ \begin{cases}
+   \dfrac{(i_1-i_2)\,l_2}{2L\,l_1}\,x^2, & 0 \le x \le l_1, \\[8pt]
+   \dfrac{(i_1-i_2)\,l_1}{2L\,l_2}\,(x-L)^2, & l_1 \le x \le L.
+ \end{cases}
+\]
+Em particular, $f(l_1) = \dfrac{(i_1-i_2)\,l_1\,l_2}{2L} = e$, confirmando que a flecha máxima ocorre no PIV.
+\end{corpo}
+
+\subsubsection*{Exemplo numérico}
+
+\begin{corpo}
+Retomando a curva assimétrica da seção anterior:
+\begin{itemize}
+  \item $i_1 = +3{,}0\% = 0{,}030$;\quad $i_2 = -1{,}0\% = -0{,}010$;
+  \item $l_1 = 80\,\text{m}$;\quad $l_2 = 120\,\text{m}$;\quad $L = 200\,\text{m}$;
+  \item $Z_I = 500{,}000\,\text{m}$;\quad $Z_A = 497{,}600\,\text{m}$;\quad $Z_B = 498{,}800\,\text{m}$;\quad $e = 0{,}960\,\text{m}$.
+\end{itemize}
+
+Suponha que o \textbf{PIV esteja na estaca 10+00,00}. Então:
+\[
+ d_{\mathrm{PIV}} = 200\,\text{m}, \quad
+ d_{\mathrm{PCV}} = 200 - 80 = 120\,\text{m}\ (\text{estaca }6+00{,}00), \quad
+ d_{\mathrm{PTV}} = 120 + 200 = 320\,\text{m}\ (\text{estaca }16+00{,}00).
+\]
+
+Os coeficientes quadráticos de flecha local são:
+\[
+ k_1 = \frac{(i_1-i_2)\,l_2}{2L\,l_1} = \frac{0{,}040 \times 120}{2 \times 200 \times 80} = 0{,}000150\,\text{m}^{-1},
+\]
+\[
+ k_2 = \frac{(i_1-i_2)\,l_1}{2L\,l_2} = \frac{0{,}040 \times 80}{2 \times 200 \times 120} = 0{,}0000\overline{6}\,\text{m}^{-1}.
+\]
+
+Tabela de estaqueamento (passo 20\,m --- somente estacas inteiras e pontos notáveis):
+
+\begin{center}
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+\textbf{Estaca} & \textbf{\boldmath$x$ (m)} & \textbf{Cota tang. (m)} & \textbf{Flecha (m)} & \textbf{Cota greide (m)} & \textbf{Ponto} \\
+\midrule
+6 + 00,00 &   0 & 497,600 & 0,000 & 497,600 & PCV \\
+7 + 00,00 &  20 & 498,200 & 0,060 & 498,140 & Inteira \\
+8 + 00,00 &  40 & 498,800 & 0,240 & 498,560 & Inteira \\
+9 + 00,00 &  60 & 499,400 & 0,540 & 498,860 & Inteira \\
+10 + 00,00 & 80 & 500,000 & 0,960 & 499,040 & PIV \\
+11 + 00,00 & 100 & 499,800 & 0,667 & 499,133 & Inteira \\
+12 + 00,00 & 120 & 499,600 & 0,427 & 499,173 & Inteira \\
+13 + 00,00 & 140 & 499,400 & 0,240 & 499,160 & Inteira \\
+14 + 00,00 & 160 & 499,200 & 0,107 & 499,093 & Inteira \\
+15 + 00,00 & 180 & 499,000 & 0,027 & 498,973 & Inteira \\
+16 + 00,00 & 200 & 498,800 & 0,000 & 498,800 & PTV \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Verificações:}
+\begin{itemize}
+  \item Flecha nula em A ($x=0$) e em B ($x=200\,\text{m}$) — a parábola é tangente às rampas nos extremos.
+  \item Flecha máxima no PIV ($x=80\,\text{m}$): $f = 0{,}960\,\text{m} = e$ \checkmark.
+  \item Variação quadrática confirmada pelo trecho 1: $f = k_1\,x^2 = 0{,}000150 \times 40^2 = 0{,}240\,\text{m}$ (estaca 8+00,00) \checkmark.
+  \item Cota tangente no PIV: $Z_{\mathrm{tang}}(80) = 497{,}600 + 0{,}030 \times 80 = 500{,}000\,\text{m} = Z_I$ \checkmark.
+\end{itemize}
+
+\textit{No App, o usuário pode escolher passo de 10\,m (intermediárias) ou 5\,m, e exportar a tabela completa em formato CSV compatível com Excel.}
+\end{corpo}
+
 \end{document}
