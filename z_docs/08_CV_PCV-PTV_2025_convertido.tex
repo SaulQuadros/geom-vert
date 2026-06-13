@@ -23,6 +23,18 @@
 \usepackage{caption}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\mdfdefinestyle{quadrostyle}{%
+  linewidth=0.8pt,
+  backgroundcolor=gray!8,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=8pt,
+  innerbottommargin=8pt,
+  skipabove=12pt,
+  skipbelow=8pt,
+}
 
 % Configuração de página observada no Word: Letter, margens aprox. 2,54 cm laterais,
 % 3,00 cm superior e 1,76 cm inferior.
@@ -619,6 +631,22 @@ Assim, o ponto de interseção das tangentes (PIV) ocorre em $x=L/2$, uma flecha
 \]
 \end{corpo}
 
+\begin{mdframed}[style=quadrostyle]
+\begin{center}
+  {\small\bfseries Quadro 1 — Parábola simétrica ($x_I = L/2$): equações de referência}
+\end{center}
+\begin{align*}
+  g   &= i_1 - i_2 \quad\text{(diferença de declividades)}\\
+  e   &= \tfrac{L\,g}{8} \quad\text{(flecha)}\\
+  Z_I &= Z_M + e \quad\text{(relação entre o PIV e o greide no ponto médio)}\\
+  Z_A &= Z_I - i_1\,\tfrac{L}{2} \quad\text{(cota do PCV)}\\
+  Z_B &= Z_I + i_2\,\tfrac{L}{2} \quad\text{(cota do PTV)}\\
+  Z(x)&= Z_A + i_1\,x - \tfrac{g}{2L}\,x^2 \quad\text{$(0 \le x \le L)$}\\
+  x_V &= \tfrac{i_1\,L}{g} \quad\text{(abscissa do vértice)}\\
+  Z_V &= Z_A + \tfrac{i_1^2\,L}{2\,g} \quad\text{(cota do vértice)}
+\end{align*}
+\end{mdframed}
+
 \section*{Parábola não simétrica em relação ao comprimento horizontal}
 
 \begin{corpo}
@@ -999,6 +1027,28 @@ Z_V &= Z_B + i_2\,(x_{V_2}-L) - k_2\,(x_{V_2}-L)^2 \\
 
 O vértice da curva é $V = (125\,\text{m},\ 499{,}175\,\text{m})$ --- confirmado pela estrela azul no perfil longitudinal da seção anterior (Fig.~4).
 \end{corpo}
+
+\begin{mdframed}[style=quadrostyle]
+\begin{center}
+  {\small\bfseries Quadro 2 — Parábola assimétrica ($l_1 \neq l_2$): equações de referência}
+\end{center}
+\begin{align*}
+  L    &= l_1 + l_2 \quad\text{(comprimento total)}\\
+  g    &= i_1 - i_2 \quad\text{(diferença de declividades)}\\
+  e    &= \tfrac{l_1\,l_2\,g}{2L} \quad\text{(flecha)}\\
+  Z_A  &= Z_I - i_1\,l_1 \quad\text{(cota do PCV)}\\
+  Z_B  &= Z_I + i_2\,l_2 \quad\text{(cota do PTV)}\\
+  Z_F  &= Z_I - e \quad\text{(cota da curva sob o PIV)}\\
+  s    &= \tfrac{i_1\,l_1 + i_2\,l_2}{L} \quad\text{(declividade da tangente no PIV)}\\
+  k_1  &= \tfrac{g\,l_2}{2L\,l_1},\quad k_2 = \tfrac{g\,l_1}{2L\,l_2} \quad\text{(coeficientes de curvatura)}\\
+  Z(x) &= Z_A + i_1\,x - k_1\,x^2 \quad\text{$(0 \le x \le l_1)$}\\
+  Z(x) &= Z_B + i_2(x-L) - k_2(x-L)^2 \quad\text{$(l_1 \le x \le L)$}\\
+  x_{V1} &= \tfrac{i_1\,L\,l_1}{g\,l_2} \quad\text{(vértice trecho 1, válido se $0 \le x_{V1} \le l_1$)}\\
+  x_{V2} &= L + \tfrac{i_2\,L\,l_2}{g\,l_1} \quad\text{(vértice trecho 2, válido se $l_1 \le x_{V2} \le L$)}\\
+  Z_V  &= Z_A + i_1\,x_V - k_1\,x_V^2 \quad\text{(cota do vértice --- trecho 1)}\\
+  Z_V  &= Z_B + i_2(x_V-L) - k_2(x_V-L)^2 \quad\text{(cota do vértice --- trecho 2)}
+\end{align*}
+\end{mdframed}
 
 % ============================================================
 \section*{Estaqueamento da concordância vertical}
