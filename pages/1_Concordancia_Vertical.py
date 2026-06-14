@@ -92,8 +92,8 @@ with col_res:
     def _tabela_html(linhas: list[tuple[str, str]]) -> str:
         trs = "".join(
             f'<tr style="border-bottom:1px solid #eee;">'
-            f'<td style="padding:5px 8px;color:#555;">{lbl}</td>'
-            f'<td style="padding:5px 8px;text-align:right;font-weight:500;">{val}</td>'
+            f'<td style="padding:5px 8px;">{lbl}</td>'
+            f'<td style="padding:5px 8px;text-align:right;">{val}</td>'
             f'</tr>'
             for lbl, val in linhas
         )
