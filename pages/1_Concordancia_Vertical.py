@@ -89,64 +89,52 @@ with col_res:
     c1.metric("Desnível g = i₁ − i₂", f"{g:.5f}")
     c2.metric("Flecha máxima e", f"{r.e:.4f} m")
 
-    if assimetrica:
-        tabela = pd.DataFrame(
-            {
-                "Elemento": [
-                    "l₁ (PCV→PIV)",
-                    "l₂ (PIV→PTV)",
-                    "Comprimento total: L",
-                    "Cota de A (PCV): Z_A",
-                    "Cota de B (PTV): Z_B",
-                    "Cota do PIV (ápice): Z_PIV",
-                    "Cota da curva sob o PIV: Z_F",
-                    "Declividade em F (sob PIV): s",
-                    "Abscissa do vértice: x_V",
-                    "Cota do vértice: Z_V",
-                ],
-                "Valor": [
-                    f"{r.l1:.3f} m",
-                    f"{r.l2:.3f} m",
-                    f"{r.L:.3f} m",
-                    f"{r.Z_A:.3f} m",
-                    f"{r.Z_B:.3f} m",
-                    f"{r.Z_PIV:.3f} m",
-                    f"{r.Z_F:.3f} m",
-                    f"{r.s * 100:.3f} %",
-                    f"{r.x_V:.3f} m",
-                    f"{r.Z_V:.3f} m",
-                ],
-            }
+    def _tabela_html(linhas: list[tuple[str, str]]) -> str:
+        trs = "".join(
+            f'<tr style="border-bottom:1px solid #eee;">'
+            f'<td style="padding:5px 8px;color:#555;">{lbl}</td>'
+            f'<td style="padding:5px 8px;text-align:right;font-weight:500;">{val}</td>'
+            f'</tr>'
+            for lbl, val in linhas
         )
-        st.table(tabela)
-        st.caption("Z_I é a cota do ápice (interseção das tangentes); a curva sob o "
-                   "PIV fica em Z_F = Z_I − e. PIV em x = l₁.")
-    else:
-        tabela = pd.DataFrame(
-            {
-                "Elemento": [
-                    "Cota de A (PCV): Z_A",
-                    "Cota de B (PTV): Z_B",
-                    "Cota do PIV (ápice): Z_PIV",
-                    "Cota do greide no ponto médio: Z_M",
-                    "Abscissa do vértice: x_V",
-                    "Cota do vértice: Z_V",
-                ],
-                "Valor": [
-                    f"{r.Z_A:.3f} m",
-                    f"{r.Z_B:.3f} m",
-                    f"{r.Z_PIV:.3f} m",
-                    f"{r.Z_I_parab:.3f} m",
-                    f"{r.x_V:.3f} m",
-                    f"{r.Z_V:.3f} m",
-                ],
-            }
-        )
-        st.table(tabela)
-        st.caption("Z_I é a cota do PIV (ápice / interseção das tangentes). "
-                   "O greide no ponto médio fica e abaixo: Z_M = Z_I − e.")
+        return f'<table style="width:100%;border-collapse:collapse;font-size:0.92em;"><tbody>{trs}</tbody></table>'
 
-with st.expander("📖 Fórmulas utilizadas"):
+    if assimetrica:
+        st.markdown(_tabela_html([
+            ("l<sub>1</sub> (PCV→PIV)",       f"{r.l1:.3f} m"),
+            ("l<sub>2</sub> (PIV→PTV)",       f"{r.l2:.3f} m"),
+            ("L",                              f"{r.L:.3f} m"),
+            ("Z<sub>A</sub> (PCV)",            f"{r.Z_A:.3f} m"),
+            ("Z<sub>B</sub> (PTV)",            f"{r.Z_B:.3f} m"),
+            ("Z<sub>I</sub> (ápice)",          f"{r.Z_PIV:.3f} m"),
+            ("Z<sub>F</sub> (sob PIV)",        f"{r.Z_F:.3f} m"),
+            ("s — decl. em F",                 f"{r.s * 100:.3f} %"),
+            ("x<sub>V</sub>",                  f"{r.x_V:.3f} m"),
+            ("Z<sub>V</sub>",                  f"{r.Z_V:.3f} m"),
+        ]), unsafe_allow_html=True)
+        st.markdown(
+            "<small>Z<sub>I</sub> é a cota do ápice (interseção das tangentes); "
+            "a curva sob o PIV fica em Z<sub>F</sub> = Z<sub>I</sub> − e. "
+            "PIV em x = l<sub>1</sub>.</small>",
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(_tabela_html([
+            ("Z<sub>A</sub> (PCV)",            f"{r.Z_A:.3f} m"),
+            ("Z<sub>B</sub> (PTV)",            f"{r.Z_B:.3f} m"),
+            ("Z<sub>I</sub> (ápice)",          f"{r.Z_PIV:.3f} m"),
+            ("Z<sub>M</sub> (sob PIV)",        f"{r.Z_I_parab:.3f} m"),
+            ("x<sub>V</sub>",                  f"{r.x_V:.3f} m"),
+            ("Z<sub>V</sub>",                  f"{r.Z_V:.3f} m"),
+        ]), unsafe_allow_html=True)
+        st.markdown(
+            "<small>Z<sub>I</sub> é a cota do PIV (ápice / interseção das tangentes). "
+            "O greide no ponto médio fica e abaixo: "
+            "Z<sub>M</sub> = Z<sub>I</sub> − e.</small>",
+            unsafe_allow_html=True,
+        )
+
+with st.expander("📖 Equações utilizadas"):
     if assimetrica:
         st.latex(r"g = i_1 - i_2 \qquad L = l_1 + l_2 \qquad e = \frac{l_1\,l_2\,g}{2L}")
         st.latex(r"Z_A = Z_I - i_1\,l_1 \qquad Z_B = Z_I + i_2\,l_2 \qquad Z_F = Z_I - e")
