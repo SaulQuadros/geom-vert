@@ -43,19 +43,19 @@ def plotar_perfil(r: ResultadoCurvaVertical) -> Figure:
         ax.scatter([r.x_V], [r.Z_V], color="blue", zorder=6, marker="*", s=180)
 
     # Rótulos de A e B
-    ax.text(x_A, r.Z_A + (0.25 if convexa else -0.25), "A (PCV)",
-            ha="center", fontsize=9, fontweight="bold")
-    ax.text(x_B, r.Z_B + (0.25 if convexa else -0.25), "B (PTV)",
-            ha="center", fontsize=9, fontweight="bold")
+    ax.text(x_A, r.Z_A + (0.4 if convexa else -0.4), "A (PCV)",
+            ha="center", fontsize=11, fontweight="bold")
+    ax.text(x_B, r.Z_B + (0.4 if convexa else -0.4), "B (PTV)",
+            ha="center", fontsize=11, fontweight="bold")
 
     # Rótulo do PIV (I), junto à interseção das tangentes
-    off_i = 0.25 if convexa else -0.25
-    ax.text(x_I, r.Z_PIV + off_i, "I (PIV)", ha="center", fontsize=9, fontweight="bold")
+    off_i = 0.4 if convexa else -0.4
+    ax.text(x_I, r.Z_PIV + off_i, "I (PIV)", ha="center", fontsize=11, fontweight="bold")
 
     # Rótulo do ponto médio do greide M (sob o PIV, separado de I pela flecha e)
-    off_m = -0.45 if convexa else 0.45
+    off_m = -0.7 if convexa else 0.7
     ax.text(x_I, r.Z_I_parab + off_m, "M (sob PIV)",
-            ha="center", fontsize=9, color="blue", fontweight="bold")
+            ha="center", fontsize=11, color="blue", fontweight="bold")
 
     # Seta dupla da flecha e exatamente entre M e PIV (x = x_I)
     if abs(r.e) > 1e-9:
@@ -66,9 +66,9 @@ def plotar_perfil(r: ResultadoCurvaVertical) -> Figure:
 
     # Rótulo do vértice (V), junto à curva e no lado oposto ao PIV para não colidir
     if not np.isnan(r.Z_V):
-        off_v = -0.45 if convexa else 0.45
+        off_v = -0.7 if convexa else 0.7
         ax.text(r.x_V, r.Z_V + off_v, "V (Vértice)",
-                ha="center", fontsize=9, color="blue", fontweight="bold")
+                ha="center", fontsize=11, color="blue", fontweight="bold")
 
     # Anotações das inclinações
     offset_i = 0.7 if convexa else -0.7
@@ -114,19 +114,19 @@ def plotar_perfil_assimetrica(r: ResultadoCurvaVerticalAssimetrica) -> Figure:
         ax.scatter([r.x_V], [r.Z_V], color="blue", zorder=6, marker="*", s=180)
 
     # Rótulos de A e B
-    ax.text(0, r.Z_A + (0.25 if convexa else -0.25), "A (PCV)",
-            ha="center", fontsize=9, fontweight="bold")
-    ax.text(r.L, r.Z_B + (0.25 if convexa else -0.25), "B (PTV)",
-            ha="center", fontsize=9, fontweight="bold")
+    ax.text(0, r.Z_A + (0.4 if convexa else -0.4), "A (PCV)",
+            ha="center", fontsize=11, fontweight="bold")
+    ax.text(r.L, r.Z_B + (0.4 if convexa else -0.4), "B (PTV)",
+            ha="center", fontsize=11, fontweight="bold")
 
     # Rótulo do PIV (I), junto ao ápice
-    off_i = 0.25 if convexa else -0.25
-    ax.text(x_I, r.Z_PIV + off_i, "I (PIV)", ha="center", fontsize=9, fontweight="bold")
+    off_i = 0.4 if convexa else -0.4
+    ax.text(x_I, r.Z_PIV + off_i, "I (PIV)", ha="center", fontsize=11, fontweight="bold")
 
     # Rótulo do ponto F (sob o PIV, separado de I pela flecha e)
-    off_f = -0.45 if convexa else 0.45
+    off_f = -0.7 if convexa else 0.7
     ax.text(x_I, r.Z_F + off_f, "F (sob PIV)",
-            ha="center", fontsize=9, color="blue", fontweight="bold")
+            ha="center", fontsize=11, color="blue", fontweight="bold")
 
     # Seta dupla da flecha e exatamente entre F e PIV (x = x_I = l1)
     if abs(r.e) > 1e-9:
@@ -137,9 +137,9 @@ def plotar_perfil_assimetrica(r: ResultadoCurvaVerticalAssimetrica) -> Figure:
 
     # Rótulo do vértice (V), no lado oposto ao PIV para não colidir
     if not np.isnan(r.Z_V):
-        off_v = -0.45 if convexa else 0.45
+        off_v = -0.7 if convexa else 0.7
         ax.text(r.x_V, r.Z_V + off_v, "V (Vértice)",
-                ha="center", fontsize=9, color="blue", fontweight="bold")
+                ha="center", fontsize=11, color="blue", fontweight="bold")
 
     # Anotações das inclinações (ao longo das tangentes)
     off_a = 0.7 if convexa else -0.7
